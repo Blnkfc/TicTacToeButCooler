@@ -1,0 +1,87 @@
+@import "variables.module";
+
+.temp{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.order{
+    position: absolute;
+    height: 90vh;
+    z-index: 0;
+    font-size: 18em;
+    color: $elementColor;
+    opacity: 25%;
+}
+.playfield{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 70% !important;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    &__row{
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        width: 100%;
+        border: none;
+        &:nth-child(1){
+            .playfield__row__cell{
+                &:nth-child(1){
+                    border-left: none;
+                    border-top: none;
+                }
+                &:nth-last-child(n-2){
+                    border-top: none;
+                }
+                &:nth-last-child(1){
+                    border-top: none;
+                    border-right: none;
+                }
+            }
+        }
+        &:nth-last-child(n-2){
+            .playfield__row__cell{
+                &:nth-child(1){
+                    border-left:none ;
+                }
+                &:nth-last-child(1){
+                    border-right: none;
+                }
+            }
+        }
+        &:nth-last-child(1){
+            .playfield__row__cell{
+                &:nth-child(1){
+                    border-left: none;
+                    border-bottom: none;
+                }
+                &:nth-last-child(n-2){
+                    border-bottom: none;
+                }
+                &:nth-last-child(1){
+                    border-right: none;
+                    border-bottom: none;
+                }
+            }
+        }
+        &__cell{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            line-height: 100%;
+            font-size: 10rem;
+            background-color: transparent;
+            border:solid 5px $borderClassic ;
+            
+            div{
+                position: absolute;
+                color: $elementColor ;
+            }
+        }
+    }
+
+}

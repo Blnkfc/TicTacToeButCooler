@@ -1,6 +1,15 @@
+import "./globals.css"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Footer from "./Components/Footer/page"
+import Header from "./Components/Header/page"
+import StoreInitializer from "./StoreInitializer/storeinitializer";
+import data from "../store/state.json"
+import {useStore} from "../src/store"
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +23,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  useStore.setState({
+    classic_playfield: data.classic_playfield,
+    order:data.order
+  })
+  
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="container">
+        <StoreInitializer classic_playfield={data.classic_playfield} order={data.order} />
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
