@@ -1,8 +1,9 @@
 {
-    "classic_playfield":[
-        [2,2,2],
-        [2,2,2],
-        [2,2,2]
-    ],
+    "layout":{
+        "rowCount": 3,
+        "colCount": 3,
+        "defaultCellValue": 2
+    },
+    "saturatedPlayfield": [],
     "order": 0
 }

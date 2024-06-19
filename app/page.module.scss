@@ -1,17 +1,18 @@
 @import "variables.module";
 
-.temp{
+.board{
     display: flex;
     justify-content: center;
     width: 100%;
-}
-.order{
-    position: absolute;
-    height: 90vh;
-    z-index: 0;
-    font-size: 18em;
-    color: $elementColor;
-    opacity: 25%;
+    &__order{
+        position: absolute;
+        height: 90vh;
+        z-index: 0;
+        font-size: 90vh;
+        color: $elementColor;
+        opacity: 25%;
+       line-height: normal;
+    }
 }
 .playfield{
     z-index: 1;
@@ -85,3 +86,4 @@
     }
 
 }
+

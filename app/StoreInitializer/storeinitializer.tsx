@@ -4,19 +4,24 @@ import { useStore} from "../../src/store"
 import { InitializeProps } from "../../interfaceList"
 
 
-const StoreInitializer = ({classic_playfield, order}: InitializeProps) => {
+const StoreInitializer = ({layout, order, saturatedPlayfield}: InitializeProps) => {
     
-    const initializeClassicPlayfield = useRef(false)
+    const initializeLayout = useRef(false)
     const initializeOrder = useRef(false)
+    const initializeSaturatedPlayfield = useRef(false) 
     
     
-    if(!initializeClassicPlayfield.current){
-        useStore.setState({classic_playfield})
-        initializeClassicPlayfield.current = true
+    if(!initializeLayout.current){
+        useStore.setState({layout})
+        initializeLayout.current = true
     }
     if(!initializeOrder.current){
         useStore.setState({order})
         initializeOrder.current = true
+    }
+    if(!initializeSaturatedPlayfield.current){
+        useStore.setState({saturatedPlayfield})
+        initializeSaturatedPlayfield.current = true
     }
     
 

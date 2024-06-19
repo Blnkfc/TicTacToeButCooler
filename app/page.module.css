@@ -1,15 +1,15 @@
-.temp {
+.board {
   display: flex;
   justify-content: center;
   width: 100%; }
-
-.order {
-  position: absolute;
-  height: 90vh;
-  z-index: 0;
-  font-size: 18em;
-  color: #e354d9;
-  opacity: 25%; }
+  .board__order {
+    position: absolute;
+    height: 90vh;
+    z-index: 0;
+    font-size: 90vh;
+    color: #e354d9;
+    opacity: 25%;
+    line-height: normal; }
 
 .playfield {
   z-index: 1;

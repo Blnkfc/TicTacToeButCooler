@@ -8,9 +8,21 @@ import { useEffect, useState } from "react";
 import { Content } from "next/font/google";
 
 
+
 export default function Home() {
-  const {order} = useStore()
-  const playfield = data.classic_playfield.map
+  const {order, saturatedPlayfield} = useStore()
+  const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
+  const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
+
+  useEffect(() => {
+    setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
+  },[rowCount, colCount, defaultCellValue])
+ 
+  useEffect(() => {
+      console.log(saturatedPlayfield)
+  }, [saturatedPlayfield])
+
+  const playfield = saturatedPlayfield.map
   ((el, i) => {return <div key={i}  className={styles.playfield__row}> {el.map
     ((subEl, j) => {return <Cell key={j} index={i} jdex={j}  value={subEl} />})} </div>})
 
@@ -27,9 +39,9 @@ export default function Home() {
 
     
   return (
-    <div className={styles.temp}>
-      <div className={styles.order} >{currentMove}</div>
-    <div className={styles.playfield} style={{}} >
+    <div className={styles.board}>
+      <div className={styles.board__order} >{currentMove}</div>
+    <div className={styles.playfield}  >
       {playfield}
     </div>
     </div>

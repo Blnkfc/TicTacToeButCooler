@@ -11,6 +11,7 @@ import {useStore} from "../src/store"
 
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,15 +26,24 @@ export default function RootLayout({
 }>) {
 
   useStore.setState({
-    classic_playfield: data.classic_playfield,
-    order:data.order
+    layout: data.layout,
+    saturatedPlayfield: data.saturatedPlayfield,
+    order: data.order,
+  
   })
+  /* const saturatePlayfield = (rows: number, cols: number, val: number) => {
+    let res = [];
+    for (let i = 0; i < rows; i++) {
+        res.push(new Array(cols).fill(val));
+    }
+    useStore.getState().setSaturatedPlayfield(res); // Use the action to update the state
+  }; */
   
 
   return (
     <html lang="en">
       <body className="container">
-        <StoreInitializer classic_playfield={data.classic_playfield} order={data.order} />
+        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} />
         <Header />
         <main>{children}</main>
         <Footer />
