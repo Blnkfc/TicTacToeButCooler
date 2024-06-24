@@ -32,16 +32,16 @@ export default function Home() {
     function isEven(order:number) {
       return (order % 2 == 0);
   }
-  const [currentMove, setCurrentMove] = useState("X")
+  const [currentMove, setCurrentMove] = useState("https://imgur.com/9h7Vqro")
   useEffect(() => {
     isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
   }, [order])
 
-
+  console.log("Current move: "+currentMove)
     
   return (
     <div className={styles.board}>
-      <div className={styles.board__order} style={{backgroundImage: currentMove}} ></div>
+      <div className={styles.board__order} style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
     <div className={styles.playfield}  >
       {playfield}
     </div>

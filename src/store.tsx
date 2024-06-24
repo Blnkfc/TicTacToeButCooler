@@ -14,7 +14,16 @@ export const useStore = create<Store>()((set) => ({
    },
    saturatedPlayfield:[[0]],
    order: 0,
+   skinSet: {
+    classic:{
+      X:"https://imgur.com/9h7Vqro",
+      O:"https://imgur.com/vYbErYP"
+    }
+   },
+
+
    toggleOrder: () => set((state) => ({order: state.order + 1})),
+
    setLayout: (rowCount:number, colCount:number, defaultCellValue:number) => set((state) => ({
       ...state,
        layout: {
@@ -24,6 +33,7 @@ export const useStore = create<Store>()((set) => ({
            defaultCellValue: defaultCellValue
        }
    })),
+
    setSaturatedPlayfield: (rows: number, cols: number, val: number) => {
         let res = [];
         for (let i = 0; i < rows; i++) {
@@ -31,7 +41,8 @@ export const useStore = create<Store>()((set) => ({
         }
         set(state => ({...state, saturatedPlayfield: res }));
       },
-      setCurrentCellState: (index: number, jdex: number, value: number) => {
+
+    setCurrentCellState: (index: number, jdex: number, value: number) => {
          set((state) => {
            // Ensure the row exists
            if (!state.saturatedPlayfield[index]) {
