@@ -13,6 +13,7 @@ export default function Home() {
   const {order, saturatedPlayfield} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
+  const moveSkin = useStore((state) => state.skinSet)
 
   useEffect(() => {
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
@@ -33,14 +34,14 @@ export default function Home() {
   }
   const [currentMove, setCurrentMove] = useState("X")
   useEffect(() => {
-    isEven(order)?setCurrentMove("✖"):setCurrentMove("☉")
+    isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
   }, [order])
 
 
     
   return (
     <div className={styles.board}>
-      <div className={styles.board__order} >{currentMove}</div>
+      <div className={styles.board__order} style={{backgroundImage: currentMove}} ></div>
     <div className={styles.playfield}  >
       {playfield}
     </div>

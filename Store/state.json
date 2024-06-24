@@ -5,5 +5,11 @@
         "defaultCellValue": 2
     },
     "saturatedPlayfield": [],
-    "order": 0
+    "order": 0,
+    "skinSet":{
+        "classic":{
+            "X": "https://imgur.com/9h7Vqro",
+            "O": "https://imgur.com/vYbErYP"
+        }
+    }
 }

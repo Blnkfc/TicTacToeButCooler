@@ -6,15 +6,25 @@ export interface Layout{
  }
 
 export interface InitializeProps {
-    layout: Layout
+    layout: Layout,
     order: number
-    saturatedPlayfield: number[][]
+    saturatedPlayfield: number[][],
+    skinSet: SkinSet
 }
+
+export interface SkinSet{
+    classic:{
+        X:string,
+        O:string
+    }
+}
+
 
 export interface Store {
     layout: Layout,
     saturatedPlayfield: number[][]
     order:number,
+    skinSet:SkinSet,
     toggleOrder:Function,
     setLayout:Function,
     setSaturatedPlayfield:Function

@@ -1,15 +1,18 @@
 .board {
   display: flex;
   justify-content: center;
-  width: 100%; }
-  .board__order {
-    position: absolute;
-    height: 90vh;
-    z-index: 0;
-    font-size: 90vh;
-    color: #e354d9;
-    opacity: 25%;
-    line-height: normal; }
+  width: 100%;
+}
+.board__order {
+  position: absolute;
+  width: 100%;
+  height: 90vh;
+  z-index: 0;
+  font-size: 90vh;
+  color: #e354d9;
+  opacity: 25%;
+  line-height: normal;
+}
 
 .playfield {
   z-index: 1;
@@ -18,44 +21,54 @@
   width: 70% !important;
   height: 90vh;
   justify-content: center;
-  align-items: center; }
-  .playfield__row {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    width: 100%;
-    border: none; }
-    .playfield__row:nth-child(1) .playfield__row__cell:nth-child(1) {
-      border-left: none;
-      border-top: none; }
-    .playfield__row:nth-child(1) .playfield__row__cell:nth-last-child(n-2) {
-      border-top: none; }
-    .playfield__row:nth-child(1) .playfield__row__cell:nth-last-child(1) {
-      border-top: none;
-      border-right: none; }
-    .playfield__row:nth-last-child(n-2) .playfield__row__cell:nth-child(1) {
-      border-left: none; }
-    .playfield__row:nth-last-child(n-2) .playfield__row__cell:nth-last-child(1) {
-      border-right: none; }
-    .playfield__row:nth-last-child(1) .playfield__row__cell:nth-child(1) {
-      border-left: none;
-      border-bottom: none; }
-    .playfield__row:nth-last-child(1) .playfield__row__cell:nth-last-child(n-2) {
-      border-bottom: none; }
-    .playfield__row:nth-last-child(1) .playfield__row__cell:nth-last-child(1) {
-      border-right: none;
-      border-bottom: none; }
-    .playfield__row__cell {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      line-height: 100%;
-      font-size: 10rem;
-      background-color: transparent;
-      border: solid 5px #000; }
-      .playfield__row__cell div {
-        position: absolute;
-        color: #e354d9; }
-
-/*# sourceMappingURL=page.module.css.map */
+  align-items: center;
+}
+.playfield__row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+}
+.playfield__row:nth-child(1) .playfield__row__cell:nth-child(1) {
+  border-left: none;
+  border-top: none;
+}
+.playfield__row:nth-child(1) .playfield__row__cell:nth-last-child(n-2) {
+  border-top: none;
+}
+.playfield__row:nth-child(1) .playfield__row__cell:nth-last-child(1) {
+  border-top: none;
+  border-right: none;
+}
+.playfield__row:nth-last-child(n-2) .playfield__row__cell:nth-child(1) {
+  border-left: none;
+}
+.playfield__row:nth-last-child(n-2) .playfield__row__cell:nth-last-child(1) {
+  border-right: none;
+}
+.playfield__row:nth-last-child(1) .playfield__row__cell:nth-child(1) {
+  border-left: none;
+  border-bottom: none;
+}
+.playfield__row:nth-last-child(1) .playfield__row__cell:nth-last-child(n-2) {
+  border-bottom: none;
+}
+.playfield__row:nth-last-child(1) .playfield__row__cell:nth-last-child(1) {
+  border-right: none;
+  border-bottom: none;
+}
+.playfield__row__cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  line-height: 100%;
+  font-size: 10rem;
+  background-color: transparent;
+  border: solid 5px #000;
+}
+.playfield__row__cell div {
+  position: absolute;
+  color: #e354d9;
+}/*# sourceMappingURL=page.module.css.map */
