@@ -26,10 +26,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
+
+
   const axios = require('axios')
+
+  
 
 
   async function  fetchData ()  {
+    
     try{
       const response = await axios.get("https://raw.githubusercontent.com/Blnkfc/TicTacToeButCooler/main/Store/state.json")
       return response.data
@@ -51,7 +56,8 @@ export default async function RootLayout({
     layout: data.layout,
     saturatedPlayfield: data.saturatedPlayfield,
     order: data.order,
-    skinSet: data.skinSet
+    skinSet: data.skinSet,
+    directionLine: data.directionLine
   })
  
   
@@ -59,7 +65,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="container">
-        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} skinSet={data.skinSet} />
+        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} skinSet={data.skinSet} directionLine={data.directionLine} />
         <Header />
         <main>{children}</main>
         <Footer />
