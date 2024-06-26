@@ -5,7 +5,6 @@ import "./globals.css";
 import Footer from "./Components/Footer/page"
 import Header from "./Components/Header/page"
 import StoreInitializer from "./StoreInitializer/storeinitializer";
-import data from "../store/state.json"
 import {useStore} from "../src/store"
 import {Store} from "../interfaceList"
 

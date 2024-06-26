@@ -20,6 +20,7 @@ export const useStore = create<Store>()((set) => ({
       O:"https://imgur.com/vYbErYP"
     }
    },
+   directionLine:[2],
 
 
    toggleOrder: () => set((state) => ({order: state.order + 1})),
@@ -54,5 +55,9 @@ export const useStore = create<Store>()((set) => ({
        
            return {...state };
          });
-       }
+      },
+    
+    setDirectionLine: (line: number[]) => {
+      set((state) => ({directionLine: line}))
+    }
    }))

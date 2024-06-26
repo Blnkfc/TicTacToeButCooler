@@ -9,7 +9,8 @@ export interface InitializeProps {
     layout: Layout,
     order: number
     saturatedPlayfield: number[][],
-    skinSet: SkinSet
+    skinSet: SkinSet,
+    directionLine: number[]
 }
 
 export interface SkinSet{
@@ -25,10 +26,12 @@ export interface Store {
     saturatedPlayfield: number[][]
     order:number,
     skinSet:SkinSet,
+    directionLine:number[],
     toggleOrder:Function,
     setLayout:Function,
-    setSaturatedPlayfield:Function
-    setCurrentCellState:Function
+    setSaturatedPlayfield:Function,
+    setCurrentCellState:Function,
+    setDirectionLine:Function
  }
 
  export interface CellProps {

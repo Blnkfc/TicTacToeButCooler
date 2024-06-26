@@ -35,7 +35,7 @@ const Cell = (props: CellProps) => {
 
     const getHorizontal = (index: number, jdex:number) => {
         setDirectionLine(saturatedPlayfield[index])
-        hasThreeConsecutiveElements(directionLine)
+        
     }
 
     const getVertical = (index: number, jdex: number) => {
@@ -45,7 +45,7 @@ const Cell = (props: CellProps) => {
         }
         console.log("RESULT"+res)
         setDirectionLine(res)
-        hasThreeConsecutiveElements(directionLine)
+       
     }
 
     const getDiagonal = (index: number, jdex: number) => {
@@ -61,7 +61,7 @@ const Cell = (props: CellProps) => {
             res.push(saturatedPlayfield[startingIndex+i][startingJdex+i])
         }
         setDirectionLine(res)
-        hasThreeConsecutiveElements(directionLine)
+        
     }
 
     const getAntiDiagonal = (index:number, jdex:number) => {
@@ -80,10 +80,12 @@ const Cell = (props: CellProps) => {
             res.push(saturatedPlayfieldCopy[startingIndex+i][startingJdex+i])
         }
         setDirectionLine(res)
-        hasThreeConsecutiveElements(directionLine)
+        
     }
 
-    
+    useEffect(() => {
+        hasThreeConsecutiveElements(directionLine)
+    }, [directionLine])
     
     
 
