@@ -7,11 +7,11 @@ import { CellProps } from "@/interfaceList"
 
 
 function Cell (props: CellProps) {
-    const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionLine} = useStore();
+    const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
     const cellState = useStore((state) => state.saturatedPlayfield[props.index][props.jdex])
     const [cellText, setCellText] = useState("")
 
-
+    console.log(`DIRECTIONARRAY: ${directionArray}`)
 
 
 
@@ -35,7 +35,7 @@ function Cell (props: CellProps) {
 
 
     const getHorizontal = (index: number, jdex:number) => {
-        setDirectionLine(saturatedPlayfield[index], 0)
+        setDirectionArray(saturatedPlayfield[index], 0)
         
     }
 
@@ -44,7 +44,7 @@ function Cell (props: CellProps) {
         for(let i = 0;i < saturatedPlayfield.length; i++){
             res.push(saturatedPlayfield[i][jdex])
         }
-        setDirectionLine(res, 1)
+        setDirectionArray(res, 1)
        
     }
 
@@ -59,7 +59,7 @@ function Cell (props: CellProps) {
         for(let i = 0; i < stepsCount; i++){
             res.push(saturatedPlayfield[startingIndex+i][startingJdex+i])
         }
-        setDirectionLine(res, 2)
+        setDirectionArray(res, 2)
         
     }
 
@@ -78,13 +78,12 @@ function Cell (props: CellProps) {
         for(let i = 0; i < stepsCount; i++){
             res.push(saturatedPlayfieldCopy[startingIndex+i][startingJdex+i])
         }
-        setDirectionLine(res, 3)
+        setDirectionArray(res, 3)
         
     }
 
     
     const checkForWin = () => {
-        console.log(directionArray)
         hasThreeConsecutiveElements(directionArray.horizontal)
         hasThreeConsecutiveElements(directionArray.vertical)
         hasThreeConsecutiveElements(directionArray.diagonal)

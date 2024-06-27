@@ -62,7 +62,7 @@ export const useStore = create<Store>()((set) => ({
          });
       },
     
-    setDirectionLine: (line: number[], direction: number) => {
+    setDirectionArray: (line: number[], direction: number) => {
       switch(direction){
         case 0:{
           set((state) => ({

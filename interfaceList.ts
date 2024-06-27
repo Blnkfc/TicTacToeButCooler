@@ -40,7 +40,7 @@ export interface Store {
     setLayout:Function,
     setSaturatedPlayfield:Function,
     setCurrentCellState:Function,
-    setDirectionLine:Function
+    setDirectionArray:Function
  }
 
  export interface CellProps {
