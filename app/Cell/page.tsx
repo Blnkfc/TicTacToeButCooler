@@ -6,8 +6,8 @@ import { CellProps } from "@/interfaceList"
 
 
 
-const Cell = (props: CellProps) => {
-    const {order, saturatedPlayfield, skinSet, directionLine, toggleOrder, setCurrentCellState, setDirectionLine} = useStore();
+function Cell (props: CellProps) {
+    const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionLine} = useStore();
     const cellState = useStore((state) => state.saturatedPlayfield[props.index][props.jdex])
     const [cellText, setCellText] = useState("")
 
@@ -20,6 +20,7 @@ const Cell = (props: CellProps) => {
     }
 
     function hasThreeConsecutiveElements(arr: number[]) {
+        console.log(`ARRAY: ${arr}`)
         if (arr.length < 3) {
             return false; 
         }
@@ -34,7 +35,7 @@ const Cell = (props: CellProps) => {
 
 
     const getHorizontal = (index: number, jdex:number) => {
-        setDirectionLine(saturatedPlayfield[index])
+        setDirectionLine(saturatedPlayfield[index], 0)
         
     }
 
@@ -43,8 +44,7 @@ const Cell = (props: CellProps) => {
         for(let i = 0;i < saturatedPlayfield.length; i++){
             res.push(saturatedPlayfield[i][jdex])
         }
-        console.log("RESULT"+res)
-        setDirectionLine(res)
+        setDirectionLine(res, 1)
        
     }
 
@@ -56,11 +56,10 @@ const Cell = (props: CellProps) => {
         startingIndex >= startingJdex
         ?stepsCount =  saturatedPlayfield.length - Math.max(startingIndex, startingJdex)
         :stepsCount = saturatedPlayfield[0].length - Math.max(startingIndex, startingJdex)
-        console.log("STEPS: "+stepsCount)
         for(let i = 0; i < stepsCount; i++){
             res.push(saturatedPlayfield[startingIndex+i][startingJdex+i])
         }
-        setDirectionLine(res)
+        setDirectionLine(res, 2)
         
     }
 
@@ -79,16 +78,23 @@ const Cell = (props: CellProps) => {
         for(let i = 0; i < stepsCount; i++){
             res.push(saturatedPlayfieldCopy[startingIndex+i][startingJdex+i])
         }
-        setDirectionLine(res)
+        setDirectionLine(res, 3)
         
     }
 
+    
+    const checkForWin = () => {
+        console.log(directionArray)
+        hasThreeConsecutiveElements(directionArray.horizontal)
+        hasThreeConsecutiveElements(directionArray.vertical)
+        hasThreeConsecutiveElements(directionArray.diagonal)
+        hasThreeConsecutiveElements(directionArray.antiDiagonal)
+    }
+    
     useEffect(() => {
-        hasThreeConsecutiveElements(directionLine)
-    }, [directionLine])
+        checkForWin()
+    }, [directionArray])
     
-    
-
 
     const doAStep = (value: number) => {
         if(!(value == 0 || value == 1) ){
@@ -100,37 +106,10 @@ const Cell = (props: CellProps) => {
                 toggleOrder()
             }
         else {alert("already taken")}
-        
-
-        for(let i = 0; i < 4; i++){
-            console.log(i)
-            switch(i){
-                case 0:{
-                    getHorizontal(props.index, props.jdex)
-                    console.log(`HORIZONTAL ${directionLine}`)
-                }
-                case 1:{
-                    getVertical(props.index, props.jdex)
-                    console.log(`VERTICAL ${directionLine}`)
-                }
-                case 2:{
-                    getDiagonal(props.index, props.jdex)
-                    console.log(`DIAGONAL ${directionLine}`)
-                }
-                case 3:{
-                    getAntiDiagonal(props.index, props.jdex)
-                    console.log(`ANTIDIAGONAL ${directionLine}`)
-                }
-                default:{
-                    return i
-                }
-            }
-        }
-
-        
-       
-        
-        
+        getHorizontal(props.index, props.jdex)
+        getVertical(props.index, props.jdex)
+        getDiagonal(props.index, props.jdex)
+        getAntiDiagonal(props.index, props.jdex)
     }
     
 

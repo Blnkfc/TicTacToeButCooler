@@ -35,7 +35,7 @@ export default async function RootLayout({
   async function  fetchData ()  {
     
     try{
-      const response = await axios.get("https://raw.githubusercontent.com/Blnkfc/TicTacToeButCooler/main/Store/state.json")
+      const response = await axios.get("https://raw.githubusercontent.com/Blnkfc/TicTacToeButCooler/main/data/state.json")
       return response.data
     }
     catch(error){
@@ -56,7 +56,7 @@ export default async function RootLayout({
     saturatedPlayfield: data.saturatedPlayfield,
     order: data.order,
     skinSet: data.skinSet,
-    directionLine: data.directionLine
+    directionArray: data.directionArray
   })
  
   
@@ -64,7 +64,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="container">
-        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} skinSet={data.skinSet} directionLine={data.directionLine} />
+        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} skinSet={data.skinSet} directionArray={data.directionArray} />
         <Header />
         <main>{children}</main>
         <Footer />

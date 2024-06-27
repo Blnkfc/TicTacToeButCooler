@@ -12,5 +12,10 @@
             "O": "https://i.imgur.com/vYbErYP.png"
         }
     },
-    "directionLine":[2]
+    "directionsArray":{
+        "horizontal": [2],
+        "vertical": [2],
+        "diagonal": [2],
+        "antiDiagonal": [2]
+    }
 }

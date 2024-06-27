@@ -20,7 +20,12 @@ export const useStore = create<Store>()((set) => ({
       O:"https://imgur.com/vYbErYP"
     }
    },
-   directionLine:[2],
+   directionArray:{
+    horizontal: [2],
+    vertical: [2],
+    diagonal: [2],
+    antiDiagonal: [2]
+   },
 
 
    toggleOrder: () => set((state) => ({order: state.order + 1})),
@@ -57,7 +62,49 @@ export const useStore = create<Store>()((set) => ({
          });
       },
     
-    setDirectionLine: (line: number[]) => {
-      set((state) => ({directionLine: line}))
+    setDirectionLine: (line: number[], direction: number) => {
+      switch(direction){
+        case 0:{
+          set((state) => ({
+           ...state,
+            directionArray: {
+              ...state.directionArray,
+              horizontal: line
+            }
+          }));
+          break;
+        }
+        case 1:{
+          set((state) => ({
+            ...state,
+             directionArray: {
+               ...state.directionArray,
+               vertical: line
+             }
+           }));
+           break;
+        }
+        case 2:{
+          set((state) => ({
+            ...state,
+             directionArray: {
+               ...state.directionArray,
+               diagonal: line
+             }
+           }));
+           break;
+        }
+        case 3:{
+          set((state) => ({
+            ...state,
+             directionArray: {
+               ...state.directionArray,
+               antiDiagonal: line
+             }
+           }));
+           break;
+        }
+      }
+      
     }
    }))

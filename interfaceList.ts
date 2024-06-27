@@ -10,7 +10,7 @@ export interface InitializeProps {
     order: number
     saturatedPlayfield: number[][],
     skinSet: SkinSet,
-    directionLine: number[]
+    directionArray: DirectionArray
 }
 
 export interface SkinSet{
@@ -20,13 +20,22 @@ export interface SkinSet{
     }
 }
 
+export interface DirectionArray{
+    horizontal: number[],
+    vertical: number[],
+    diagonal: number[],
+    antiDiagonal: number[]
+}
+
 
 export interface Store {
     layout: Layout,
     saturatedPlayfield: number[][]
     order:number,
     skinSet:SkinSet,
-    directionLine:number[],
+    directionArray: DirectionArray,
+
+
     toggleOrder:Function,
     setLayout:Function,
     setSaturatedPlayfield:Function,
