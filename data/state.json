@@ -17,5 +17,7 @@
         "vertical": [2],
         "diagonal": [2],
         "antiDiagonal": [2]
-    }
+    },
+    "lastChangedCell":0,
+    "win": false
 }

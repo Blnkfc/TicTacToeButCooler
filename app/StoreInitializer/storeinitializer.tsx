@@ -4,13 +4,15 @@ import { useStore} from "../../src/store"
 import { InitializeProps } from "../../interfaceList"
 
 
-const StoreInitializer = ({layout, order, saturatedPlayfield, skinSet, directionArray}: InitializeProps) => {
+const StoreInitializer = ({layout, order, saturatedPlayfield, skinSet, directionArray, lastChangedCell, win}: InitializeProps) => {
     
     const initializeLayout = useRef(false)
     const initializeOrder = useRef(false)
     const initializeSaturatedPlayfield = useRef(false) 
     const initializeSkinSet = useRef(false)
     const initializeDirectionArray = useRef(false)
+    const initializelastChangedCell = useRef(false)
+    const initializeWin = useRef(false)
     
     
     if(!initializeLayout.current){
@@ -32,6 +34,14 @@ const StoreInitializer = ({layout, order, saturatedPlayfield, skinSet, direction
     if(!initializeDirectionArray.current){
         useStore.setState({directionArray})
         initializeDirectionArray.current = true
+    }
+    if(!initializelastChangedCell.current){
+        useStore.setState({lastChangedCell})
+        initializelastChangedCell.current = true
+    }
+    if(!initializeWin.current){
+        useStore.setState({win})
+        initializeWin.current = true
     }
 
 

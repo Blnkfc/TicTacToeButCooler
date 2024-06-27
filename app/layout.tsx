@@ -56,7 +56,9 @@ export default async function RootLayout({
     saturatedPlayfield: data.saturatedPlayfield,
     order: data.order,
     skinSet: data.skinSet,
-    directionArray: data.directionArray
+    directionArray: data.directionArray,
+    lastChangedCell: data.lastChangedCell,
+    win: data.win
   })
  
   
@@ -64,7 +66,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="container">
-        <StoreInitializer layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} skinSet={data.skinSet} directionArray={data.directionArray} />
+        <StoreInitializer 
+        layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
+        skinSet={data.skinSet} directionArray={data.directionArray} lastChangedCell={data.lastChangedCell} win={data.win} />
         <Header />
         <main>{children}</main>
         <Footer />

@@ -10,7 +10,9 @@ export interface InitializeProps {
     order: number
     saturatedPlayfield: number[][],
     skinSet: SkinSet,
-    directionArray: DirectionArray
+    directionArray: DirectionArray,
+    lastChangedCell: number,
+    win: boolean
 }
 
 export interface SkinSet{
@@ -34,6 +36,8 @@ export interface Store {
     order:number,
     skinSet:SkinSet,
     directionArray: DirectionArray,
+    lastChangedCell: number,
+    win: boolean,
 
 
     toggleOrder:Function,

@@ -26,6 +26,8 @@ export const useStore = create<Store>()((set) => ({
     diagonal: [2],
     antiDiagonal: [2]
    },
+   lastChangedCell:0,
+   win: false,
 
 
    toggleOrder: () => set((state) => ({order: state.order + 1})),
