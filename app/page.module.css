@@ -62,18 +62,28 @@
 }
 .playfield__row__cell {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   background-color: transparent;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
   border: solid 5px #000;
+}
+.playfield__row__cell__fadeIn {
+  animation: cell-fade-in 0.3s infinite;
+}
+.playfield__row__cell__fadeOut {
+  animation: cell-fade-out 0.3s infinite;
 }
 .playfield__row__cell div {
   position: absolute;
   color: #e354d9;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform-style: preserve-3d;
 }
 
 @keyframes order-spin {
@@ -85,5 +95,21 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes cell-spin-in {
+  from {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+  to {
+    transform: rotate3d(1, 0, 0, 180deg);
+  }
+}
+@keyframes cell-spin-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=page.module.css.map */

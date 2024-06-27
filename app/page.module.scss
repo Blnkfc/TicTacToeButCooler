@@ -73,18 +73,27 @@
         }
         &__cell{
             display: flex;
+            position: relative;
             justify-content: center;
             align-items: center;
             flex-grow: 1;
             background-color: transparent;
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
             border:solid 5px $borderClassic ;
-            
+            &__fadeIn{
+                animation:cell-fade-in 0.3s infinite;
+            }
+            &__fadeOut{
+                animation:cell-fade-out 0.3s infinite;
+            }
             div{
                 position: absolute;
                 color: $elementColor ;
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                transform-style: preserve-3d;
             }
         }
     }
@@ -100,5 +109,18 @@
     }
     100%{
         transform: rotate(360deg);
+    }
+}
+
+@keyframes cell-spin-in {
+    from{transform: rotate3d(1, 0, 0, 0deg);}
+    to{transform: rotate3d(1, 0, 0, 180deg);}
+}
+@keyframes cell-spin-out {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
     }
 }

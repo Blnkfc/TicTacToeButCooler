@@ -3,6 +3,7 @@ import styles from "../page.module.css"
 import { useState, useEffect, ReactNode, use } from "react"
 import { useStore } from "@/src/store"
 import { CellProps } from "@/interfaceList"
+import { jsxDEV } from "react/jsx-dev-runtime"
 
 
 
@@ -10,9 +11,23 @@ function Cell (props: CellProps) {
     const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
     const cellState = useStore((state) => state.saturatedPlayfield[props.index][props.jdex])
     const [cellText, setCellText] = useState("")
+    const [lifespan, setLifespan] = useState(0)
+    const cellElement = document.getElementById(props.index.toString()+props.jdex.toString())
 
-    console.log(`DIRECTIONARRAY: ${directionArray}`)
 
+    
+    useEffect(() => {
+        cellState!=2?setLifespan(lifespan+1):setLifespan(0)
+        if(lifespan==5){
+            setCurrentCellState(props.index, props.jdex, 2)
+        }
+        if(lifespan==6){
+           
+            setCellText("")
+            console.log('CLEARED THE CELL')
+        }
+            
+    }, [order])
 
 
     function isEven(order:number) {
@@ -110,13 +125,41 @@ function Cell (props: CellProps) {
         getDiagonal(props.index, props.jdex)
         getAntiDiagonal(props.index, props.jdex)
     }
+
+    useEffect(() => {
+        if(cellElement != null){
+            if(cellState != 2)
+                cellElement.style.animation="cell-spin-in 0.3s linear"
+            else
+                cellElement.style.animation="cell-blink infinite linear"
+        } 
+            
+    }, [cellState])
     
 
 
-    return <button className={styles.playfield__row__cell}  onClick={() => {doAStep(cellState)}} 
-    style={{backgroundImage: "url('"+cellText.toString()+"')"}} >
-        <div></div>
+    return <button className={styles.playfield__row__cell}  onClick={() => {doAStep(cellState)}} >
+        <div 
+        style={{
+            backgroundImage: "url('"+cellText.toString()+"')", 
+            opacity:lifespan==5||lifespan==6?"50%":"100%"}} 
+        id={props.index.toString()+props.jdex.toString()} 
+        className={cellState!=2?"playfield__row__cell__fadeIn":" "}></div>
+        <style jsx>{`
+        @keyframes cell-spin-in {
+            from{transform: rotate3d(1, 0, 0, 0deg);}
+            to{transform: rotate3d(1, 0, 0, 180deg);}
+            }
+        @keyframes cell-blink {
+            0%{
+                opacity: 100%;
+            }
+            100%{
+                opacity: 0%;
+            }  
+        `}</style>
     </button>
+    
 }
 
 export default Cell
