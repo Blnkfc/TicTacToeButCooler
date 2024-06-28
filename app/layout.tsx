@@ -12,6 +12,7 @@ import {Store} from "../interfaceList"
 
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

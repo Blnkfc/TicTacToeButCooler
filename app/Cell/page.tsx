@@ -18,11 +18,10 @@ const Cell = (props: CellProps) => {
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
     const [cellState, setCellState] = useState(2)
+    const cellElementRef = useRef<HTMLDivElement>(null); 
 
-    const cellElementRef = useRef<HTMLDivElement>(null); // Use ref instead of directly accessing the DOM
-
+    //GETTING THE HTML ELEMENT OF THE CELL TO GRAB IT'S STATE
     useEffect(() => {
-        // This code now runs only on the client side
         const cellElement = document.getElementById(props.idex.toString() + props.jdex.toString());
         if (cellElement) {
             setCellState(saturatedPlayfield[props?.idex][props?.jdex]);
@@ -31,10 +30,12 @@ const Cell = (props: CellProps) => {
 
 
     useEffect(() => {
-        setCellState(saturatedPlayfield[props?.idex][props?.jdex])
-    }, [saturatedPlayfield])
+        console.log(`CURRENT SPP IS: ${saturatedPlayfield} INDEX IS ${props.idex} JDEX IS ${props.jdex}`)
+        console.log(`CELLSTATE UPDATED TO ${saturatedPlayfield[props.idex][props.jdex]}`)
+        setCellState(saturatedPlayfield[props.idex][props.jdex])
+    }, [saturatedPlayfield, order])
 
-
+    //UPDATING LIFESPAN AND CHENGING CELL'S VALUE DEPENDING ON THE LIFESPAN
     useEffect(() => {
         cellState!=2?setLifespan(lifespan+1):setLifespan(0)
         if(lifespan==5){
