@@ -1,6 +1,6 @@
 'use client'
 import styles from "../page.module.css"
-import { useState, useEffect, ReactNode, use } from "react"
+import { useState, useEffect, ReactNode, use, useRef } from "react"
 import { useStore } from "@/src/store"
 
 
@@ -15,13 +15,26 @@ interface CellProps {
 
 const Cell = (props: CellProps) => {
     const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
-    const cellState = useStore((state) => state.saturatedPlayfield[props.idex][props.jdex])
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
-    const cellElement = document.getElementById(props.idex.toString()+props.jdex.toString())
+    const [cellState, setCellState] = useState(2)
+
+    const cellElementRef = useRef<HTMLDivElement>(null); // Use ref instead of directly accessing the DOM
+
+    useEffect(() => {
+        // This code now runs only on the client side
+        const cellElement = document.getElementById(props.idex.toString() + props.jdex.toString());
+        if (cellElement) {
+            setCellState(saturatedPlayfield[props?.idex][props?.jdex]);
+        }
+    }, [saturatedPlayfield]);
 
 
-    
+    useEffect(() => {
+        setCellState(saturatedPlayfield[props?.idex][props?.jdex])
+    }, [saturatedPlayfield])
+
+
     useEffect(() => {
         cellState!=2?setLifespan(lifespan+1):setLifespan(0)
         if(lifespan==5){
@@ -133,14 +146,15 @@ const Cell = (props: CellProps) => {
     }
 
     useEffect(() => {
-        if(cellElement != null){
-            if(cellState != 2)
-                cellElement.style.animation="cell-spin-in 0.3s linear"
-            else
-                cellElement.style.animation="cell-blink infinite linear"
-        } 
-            
-    }, [cellState])
+        if (cellElementRef.current) {
+            const cellElement = cellElementRef.current;
+            if (cellState!= 2) {
+                cellElement.style.animation = "cell-spin-in 0.3s linear";
+            } else {
+                cellElement.style.animation = "cell-blink infinite linear";
+            }
+        }
+    }, [cellState]);
     
 
 
@@ -149,7 +163,7 @@ const Cell = (props: CellProps) => {
         style={{
             backgroundImage: "url('"+cellText.toString()+"')", 
             opacity:lifespan==5||lifespan==6?"50%":"100%"}} 
-        id={props.idex.toString()+props.jdex.toString()} 
+        id={props.idex?.toString()+props.jdex?.toString()} 
         className={cellState!=2?"playfield__row__cell__fadeIn":" "}></div>
         <style jsx>{`
         @keyframes cell-spin-in {

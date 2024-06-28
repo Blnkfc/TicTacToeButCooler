@@ -47,3 +47,4 @@ import { Content } from "next/font/google";
   );
 }
 
+export default Home
