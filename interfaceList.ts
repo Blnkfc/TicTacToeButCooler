@@ -47,9 +47,4 @@ export interface Store {
     setDirectionArray:Function
  }
 
- export interface CellProps {
-    index: number,
-    jdex: number,
-    value: number
-    
-}
+ 

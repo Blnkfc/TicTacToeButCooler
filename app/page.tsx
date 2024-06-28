@@ -8,7 +8,7 @@ import { Content } from "next/font/google";
 
 
 
-export default function Home() {
+  const Home = () => {
   const {order, saturatedPlayfield} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
@@ -21,10 +21,10 @@ export default function Home() {
   useEffect(() => {
       console.log(saturatedPlayfield)
   }, [saturatedPlayfield])
-
+  console.log(`SPP: ${saturatedPlayfield}`)
   const playfield = saturatedPlayfield.map
-  ((el, i) => {return <div key={i}  className={styles.playfield__row}> {el.map
-    ((subEl, j) => {return <Cell key={j} index={i} jdex={j}  value={subEl} />})} </div>})
+  ((el, i:number) => {return <div key={i}  className={styles.playfield__row}> {el.map
+    ((subEl, j:number) => {return <Cell key={j} idex={i} jdex={j}  />})} </div>})
 
     //&#9737; O
     //&#10006; X

@@ -2,24 +2,30 @@
 import styles from "../page.module.css"
 import { useState, useEffect, ReactNode, use } from "react"
 import { useStore } from "@/src/store"
-import { CellProps } from "@/interfaceList"
-import { jsxDEV } from "react/jsx-dev-runtime"
 
 
 
-function Cell (props: CellProps) {
+interface CellProps {
+    idex: number,
+    jdex: number,
+
+    
+}
+
+
+const Cell = (props: CellProps) => {
     const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
-    const cellState = useStore((state) => state.saturatedPlayfield[props.index][props.jdex])
+    const cellState = useStore((state) => state.saturatedPlayfield[props.idex][props.jdex])
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
-    const cellElement = document.getElementById(props.index.toString()+props.jdex.toString())
+    const cellElement = document.getElementById(props.idex.toString()+props.jdex.toString())
 
 
     
     useEffect(() => {
         cellState!=2?setLifespan(lifespan+1):setLifespan(0)
         if(lifespan==5){
-            setCurrentCellState(props.index, props.jdex, 2)
+            setCurrentCellState(props.idex, props.jdex, 2)
         }
         if(lifespan==6){
            
@@ -115,15 +121,15 @@ function Cell (props: CellProps) {
             console.log("value: "+value)
             console.log("boead: "+saturatedPlayfield)
 
-                isEven(order)?setCurrentCellState(props.index, props.jdex, 0):setCurrentCellState(props.index, props.jdex,1)
+                isEven(order)?setCurrentCellState(props.idex, props.jdex, 0):setCurrentCellState(props.idex, props.jdex,1)
                 isEven(order)?setCellText(skinSet.classic.X): setCellText(skinSet.classic.O);
                 toggleOrder()
             }
         else {alert("already taken")}
-        getHorizontal(props.index, props.jdex)
-        getVertical(props.index, props.jdex)
-        getDiagonal(props.index, props.jdex)
-        getAntiDiagonal(props.index, props.jdex)
+        getHorizontal(props.idex, props.jdex)
+        getVertical(props.idex, props.jdex)
+        getDiagonal(props.idex, props.jdex)
+        getAntiDiagonal(props.idex, props.jdex)
     }
 
     useEffect(() => {
@@ -143,7 +149,7 @@ function Cell (props: CellProps) {
         style={{
             backgroundImage: "url('"+cellText.toString()+"')", 
             opacity:lifespan==5||lifespan==6?"50%":"100%"}} 
-        id={props.index.toString()+props.jdex.toString()} 
+        id={props.idex.toString()+props.jdex.toString()} 
         className={cellState!=2?"playfield__row__cell__fadeIn":" "}></div>
         <style jsx>{`
         @keyframes cell-spin-in {
