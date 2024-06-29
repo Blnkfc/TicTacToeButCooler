@@ -32,6 +32,8 @@ export const useStore = create<Store>()((set) => ({
 
    toggleOrder: () => set((state) => ({order: state.order + 1})),
 
+   restartOrder: () => set((state) => ({order: 0})),
+
    setLayout: (rowCount:number, colCount:number, defaultCellValue:number) => set((state) => ({
       ...state,
        layout: {

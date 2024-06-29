@@ -16,7 +16,9 @@ const Cell = (props: CellProps) => {
     const [lifespan, setLifespan] = useState(0)
     const [cellState, setCellState] = useState(2)
     const cellElementRef = useRef<HTMLDivElement>(null); 
-
+    if (typeof window!== 'undefined') 
+        var audio = new Audio(`/audio/tap-notification-180637.mp3`);
+    
 
 
     //GETTING THE HTML ELEMENT OF THE CELL TO GRAB IT'S STATE
@@ -37,10 +39,10 @@ const Cell = (props: CellProps) => {
     //UPDATING LIFESPAN AND CHENGING CELL'S VALUE DEPENDING ON THE LIFESPAN
     useEffect(() => {
         cellState!=2?setLifespan(lifespan+1):setLifespan(0)
-        if(lifespan==5){
+        if(lifespan==4){
             setCurrentCellState(props.idex, props.jdex, 2)
         }
-        if(lifespan==6){
+        if(lifespan==5){
            
             setCellText("")
             //console.log('CLEARED THE CELL')
@@ -133,6 +135,7 @@ const Cell = (props: CellProps) => {
     
 
     const doAStep = (value: number) => {
+        audio.play()
         if(!(value == 0 || value == 1) ){
             console.log("value: "+value)
             console.log("boead: "+saturatedPlayfield)
@@ -172,7 +175,9 @@ const Cell = (props: CellProps) => {
             backgroundImage: "url('"+cellText.toString()+"')", 
             opacity:lifespan==5||lifespan==6?"50%":"100%"}} 
         id={props.idex?.toString()+props.jdex?.toString()} 
-        className={cellState!=2?"playfield__row__cell__fadeIn":" "}></div>
+        className={cellState!=2?"playfield__row__cell__fadeIn":" "}>
+            <audio src="/"></audio>
+        </div>
         <style jsx>{`
         @keyframes cell-spin-in {
             from{transform: rotate3d(1, 0, 0, 0deg);}

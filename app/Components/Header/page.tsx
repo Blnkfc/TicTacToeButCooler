@@ -1,11 +1,10 @@
 'use client'
 
-import styler from "./Header.module.css"
-import data from "../../../store/state.json"
+import styles from "./Header.module.css"
 
 const Header = () => {
 
-    return <div className="header" >
+    return <div className={styles.header} >
         Hedaer
     </div>
 }

@@ -46,6 +46,7 @@ export interface Store {
 
 
     toggleOrder:Function,
+    restartOrder: Function,
     setLayout:Function,
     setSaturatedPlayfield:Function,
     setCurrentCellState:Function,

@@ -1,6 +1,6 @@
 import "./globals.css"
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import Footer from "./Components/Footer/page"
 import Header from "./Components/Header/page"
@@ -13,7 +13,11 @@ import {Store} from "../interfaceList"
 
 
 
-const inter = Inter({ subsets: ["latin"] });
+const lato = Lato({ 
+  weight: ['400', '700'],
+  style: 'normal',
+  subsets: ["latin"] 
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -71,7 +75,7 @@ export default async function RootLayout({
         layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
         skinSet={data.skinSet} directionArray={data.directionArray} lastChangedCell={data.lastChangedCell} win={data.win} />
         <Header />
-        <main>{children}</main>
+        <main className={lato.className} >{children}</main>
         <Footer />
       </body>
     </html>

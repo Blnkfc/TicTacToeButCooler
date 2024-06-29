@@ -5,9 +5,19 @@ import { motion } from "framer-motion";
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      initial={{ y: 20, opacity: 0 , width: "100%"}}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
+    initial={{ 
+      width: "100%",
+      opacity: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    }}
+    animate={{ 
+      opacity: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+     }}
+    exit={{
+      clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)"
+    }}
+    transition={{ duration: 0.45 }}
     >
       {children}
     </motion.div>

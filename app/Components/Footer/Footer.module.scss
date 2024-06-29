@@ -1,0 +1,6 @@
+@import "../../variables.module";
+
+.footer{
+    height: 2em;
+    background-color: darken($color: $backgroundColor, $amount: 65%);
+}
