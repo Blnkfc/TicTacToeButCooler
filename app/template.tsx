@@ -8,7 +8,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     initial={{ 
       width: "100%",
       opacity: 0,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)"
     }}
     animate={{ 
       opacity: 1,

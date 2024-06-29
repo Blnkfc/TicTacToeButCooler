@@ -3,7 +3,7 @@ import styles from "../page.module.css"
 import { useState, useEffect, ReactNode, use, useRef } from "react"
 import { useStore } from "@/src/store"
 import { CellProps } from "@/interfaceList"
-
+import { motion } from "framer-motion";
 
 
 
@@ -169,7 +169,18 @@ const Cell = (props: CellProps) => {
     
 
 
-    return <button className={styles.playfield__row__cell}  onClick={() => {doAStep(cellState)}} >
+    return <motion.div 
+    
+      animate={{ 
+        opacity: 1,
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+       }}
+      exit={{
+        clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)"
+      }}
+      transition={{ duration: 0.45 }}
+    className={styles.playfield__row__cell}  
+    onClick={() => {doAStep(cellState)}} >
         <div 
         style={{
             backgroundImage: "url('"+cellText.toString()+"')", 
@@ -178,20 +189,7 @@ const Cell = (props: CellProps) => {
         className={cellState!=2?"playfield__row__cell__fadeIn":" "}>
             <audio src="/"></audio>
         </div>
-        <style jsx>{`
-        @keyframes cell-spin-in {
-            from{transform: rotate3d(1, 0, 0, 0deg);}
-            to{transform: rotate3d(1, 0, 0, 180deg);}
-            }
-        @keyframes cell-blink {
-            0%{
-                opacity: 100%;
-            }
-            100%{
-                opacity: 0%;
-            }  
-        `}</style>
-    </button>
+    </motion.div>
     
 }
 
