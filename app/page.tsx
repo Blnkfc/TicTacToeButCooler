@@ -5,19 +5,28 @@ import Cell from "./Cell/page";
 import { useStore } from "../src/store";
 import { useEffect, useState } from "react";
 import { Content } from "next/font/google";
+import { useRouter } from "next/navigation"
 
 
 
   const Home = () => {
-  const {order, saturatedPlayfield} = useStore()
+  const {order, saturatedPlayfield, win} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
+  const router = useRouter()
+
+
 
   useEffect(() => {
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
   },[rowCount, colCount, defaultCellValue])
  
+  useEffect(() => {
+    if(win)
+      router.push("/WinScreen")
+  }, [win])
+
   useEffect(() => {
       console.log(saturatedPlayfield)
   }, [saturatedPlayfield])

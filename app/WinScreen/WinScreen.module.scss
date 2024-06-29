@@ -1,0 +1,21 @@
+
+.WinScreen{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-around;
+    &__alert{
+        &#first{
+            transform: rotate(-90deg);
+        }
+        &#second{
+            transform: rotate(90deg);
+        }
+    }
+    &__display{
+        display: flex;
+        flex-direction: column;
+    }
+}

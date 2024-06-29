@@ -100,18 +100,6 @@
 
 }
 
-@keyframes order-spin{
-    30%{
-        transform: rotate(165deg);
-    }
-    70%{
-        transform: rotate(205deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
-
 @keyframes cell-spin-in {
     from{transform: rotate3d(1, 0, 0, 0deg);}
     to{transform: rotate3d(1, 0, 0, 180deg);}

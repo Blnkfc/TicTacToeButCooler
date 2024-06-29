@@ -1,4 +1,9 @@
 
+export interface CellProps {
+    idex: number,
+    jdex: number    
+}
+
 export interface Layout{
     rowCount: number,
     colCount: number,
@@ -44,7 +49,8 @@ export interface Store {
     setLayout:Function,
     setSaturatedPlayfield:Function,
     setCurrentCellState:Function,
-    setDirectionArray:Function
+    setDirectionArray:Function,
+    toggleWin:Function
  }
 
  

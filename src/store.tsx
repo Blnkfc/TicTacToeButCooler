@@ -108,5 +108,9 @@ export const useStore = create<Store>()((set) => ({
         }
       }
       
-    }
-   }))
+    },
+    toggleWin: () => set((state) => ({win: !state.win}))
+    
+
+  
+  }))

@@ -2,23 +2,22 @@
 import styles from "../page.module.css"
 import { useState, useEffect, ReactNode, use, useRef } from "react"
 import { useStore } from "@/src/store"
+import { CellProps } from "@/interfaceList"
 
 
 
-interface CellProps {
-    idex: number,
-    jdex: number,
 
-    
-}
+
 
 
 const Cell = (props: CellProps) => {
-    const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
+    const {order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray, win, toggleWin} = useStore();
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
     const [cellState, setCellState] = useState(2)
     const cellElementRef = useRef<HTMLDivElement>(null); 
+
+
 
     //GETTING THE HTML ELEMENT OF THE CELL TO GRAB IT'S STATE
     useEffect(() => {
@@ -30,8 +29,8 @@ const Cell = (props: CellProps) => {
 
 
     useEffect(() => {
-        console.log(`CURRENT SPP IS: ${saturatedPlayfield} INDEX IS ${props.idex} JDEX IS ${props.jdex}`)
-        console.log(`CELLSTATE UPDATED TO ${saturatedPlayfield[props.idex][props.jdex]}`)
+        //console.log(`CURRENT SPP IS: ${saturatedPlayfield} INDEX IS ${props.idex} JDEX IS ${props.jdex}`)
+        //console.log(`CELLSTATE UPDATED TO ${saturatedPlayfield[props.idex][props.jdex]}`)
         setCellState(saturatedPlayfield[props.idex][props.jdex])
     }, [saturatedPlayfield, order])
 
@@ -44,7 +43,7 @@ const Cell = (props: CellProps) => {
         if(lifespan==6){
            
             setCellText("")
-            console.log('CLEARED THE CELL')
+            //console.log('CLEARED THE CELL')
         }
             
     }, [order])
@@ -55,13 +54,16 @@ const Cell = (props: CellProps) => {
     }
 
     function hasThreeConsecutiveElements(arr: number[]) {
-        console.log(`ARRAY: ${arr}`)
+        //console.log(`ARRAY: ${arr}`)
         if (arr.length < 3) {
             return false; 
         }
         for (let i = 0; i <= arr.length - 3; i++) {
             if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2]) {
-                alert("WINNN")
+                    console.log(`TOGGLED WIN`)
+                    toggleWin()
+                
+                    
                 return true; 
             }
         }
@@ -146,16 +148,21 @@ const Cell = (props: CellProps) => {
         getAntiDiagonal(props.idex, props.jdex)
     }
 
+
+
+    //TODO
+    //FIX THE ANIMATION FOR THE ELEMENT 
     useEffect(() => {
         if (cellElementRef.current) {
             const cellElement = cellElementRef.current;
+            console.log(`CELL ELEMENT: ${cellElement}`)
             if (cellState!= 2) {
                 cellElement.style.animation = "cell-spin-in 0.3s linear";
             } else {
                 cellElement.style.animation = "cell-blink infinite linear";
             }
         }
-    }, [cellState]);
+    }, [cellState, cellElementRef]);
     
 
 
