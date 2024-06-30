@@ -48,7 +48,11 @@ import { useRouter } from "next/navigation"
 
   return (
     <div className={styles.board}>
-      <div className={styles.board__order} style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
+      <div className={styles.board__background} style={{backgroundImage: "url('"+currentMove.toString()+"')"}} >
+
+        
+
+      </div>
     <div className={styles.playfield}  >
       {playfield}
     </div>

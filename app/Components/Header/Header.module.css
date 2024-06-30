@@ -1,5 +1,31 @@
 .header {
-  height: 2em;
+  display: flex;
+  justify-content: space-between;
+  height: 3em;
   background-color: white;
   box-shadow: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.44);
+}
+.header img {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+}
+
+.burger {
+  width: 3em;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+.burger__layer {
+  background-color: #000;
+  position: absolute;
+  height: 0.2em;
+  width: 1em;
+}
+.burger__layer:nth-child(1) {
+  transform: translateY(-150%);
+}
+.burger__layer:nth-last-child(1) {
+  transform: translateY(150%);
 }/*# sourceMappingURL=Header.module.css.map */

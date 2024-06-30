@@ -6,7 +6,7 @@
     align-items: center;
     width: 100%;
     padding: 2em 0 2em 0;
-    &__order{
+    &__background{
         position: absolute;
         width: 20%;
         aspect-ratio: 1;
@@ -15,7 +15,8 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        /* animation: order-spin 1s 1s linear; */
+        
+
     }
 }
 .playfield{
