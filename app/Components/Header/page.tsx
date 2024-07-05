@@ -41,7 +41,6 @@ return <div className={styles.header} >
             <h2>Layout:</h2>
             <p>Rows:<br/> <input type="number" placeholder={layout.rowCount.toString()=="0"?"3":layout.rowCount.toString()} id="row" onChange={(event) => setRowCount(event.target.value)} /></p> 
             <p>Columns:<br/> <input type="number" placeholder={layout.colCount.toString()=="0"?"3":layout.colCount.toString()} id="col" onChange={(event) => setColCount(event.target.value)} /></p>
-            <button onClick={toggleWinCondition}>WIN</button>
         </motion.div>
     </div>
 }
