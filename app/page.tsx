@@ -19,10 +19,12 @@ import { useRouter } from "next/navigation"
 
 
   useEffect(() => {
+    console.log(`DOES IT EVEN WORK ${rowCount}, ${colCount}`)
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
   },[rowCount, colCount, defaultCellValue])
  
   useEffect(() => {
+    console.log(`TOGGLED WIN: ${win}`)
     if(win)
       router.push("/WinScreen")
   }, [win])
@@ -49,8 +51,6 @@ import { useRouter } from "next/navigation"
   return (
     <div className={styles.board}>
       <div className={styles.board__background} style={{backgroundImage: "url('"+currentMove.toString()+"')"}} >
-
-        
 
       </div>
     <div className={styles.playfield}  >

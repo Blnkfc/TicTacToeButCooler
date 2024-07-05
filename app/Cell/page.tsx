@@ -61,9 +61,9 @@ const Cell = (props: CellProps) => {
             return false; 
         }
         for (let i = 0; i <= arr.length - 3; i++) {
-            if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2]) {
-                    console.log(`TOGGLED WIN`)
-                    toggleWin()
+            if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2] && arr[i]!=2) {
+                console.log(`FIRST TOGGLED WIN: ${win}`)
+                toggleWin()
                 
                     
                 return true; 
@@ -187,7 +187,7 @@ const Cell = (props: CellProps) => {
             opacity:lifespan==5||lifespan==6?"50%":"100%"}} 
         id={props.idex?.toString()+props.jdex?.toString()} 
         className={cellState!=2?"playfield__row__cell__fadeIn":" "}>
-            <audio src="/"></audio>
+            <audio src="/" preload="auto"></audio>
         </div>
     </motion.div>
     

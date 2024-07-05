@@ -74,9 +74,13 @@ export default async function RootLayout({
         <StoreInitializer 
         layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
         skinSet={data.skinSet} directionArray={data.directionArray} lastChangedCell={data.lastChangedCell} win={data.win} />
-        <Header />
-        <main className={lato.className} >{children}</main>
-        <Footer />
+        
+        <main className={lato.className} >
+        <Header  />  
+          {children}
+        <Footer />  
+          </main>
+        
       </body>
     </html>
   );
