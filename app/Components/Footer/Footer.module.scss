@@ -20,16 +20,33 @@
         width: 60%;
         justify-content: space-around;
         &__media{
+           
             width: 3em;
             height: 2em;
+            background-color: transparent;
+            background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
             scale:0.8;
             transition: all 0.1s;
             -webkit-transition : -webkit-filter 500ms linear;
             &:hover{
+                background-color: transparent;
                 scale:1;
-                filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%);
+                filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em $elementColor);
+
+            }
+            &::after{
+                position: absolute;
+                content: " ";
+                width: 3em;
+                height: 0.5em;
+                background-color: #fff; 
+                border-radius: 100%;
+                bottom: 0;
+                filter: blur(2px);
+                box-shadow: 0 0.1em 1em #fff;
+                transform: translateY(0.5em);
             }
         }
     }

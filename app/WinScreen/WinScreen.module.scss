@@ -8,10 +8,11 @@
     justify-content: space-around;
     align-items: center;
     font-weight: 700;
-    background-color: $backgroundColor;
+    background-color: darken($backgroundColor, 20%);
     &__alert{
         font-size: 8em;
         color: #fff;
+        filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em $elementColor);
         &#first{
             transform: rotate(-90deg);
             animation: win-slide-in-1 0.5s linear ;
@@ -27,18 +28,36 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        height: 80%; 
+        color: #fff;
+        filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em $elementColor);
         &__img{
             width: 20em;
             height: 20em;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            &::after{
+                position: absolute;
+                content: " ";
+                width: 20em;
+                height: 2em;
+                bottom: 0;
+                border-radius: 100%;
+                box-shadow: 0 0 5em rgba(227, 84, 217, 10%);
+                filter: blur(5px) drop-shadow(0 0 5em $elementColor);
+                background-color: rgba(227, 84, 217, 10%);
+            }
         }
         &__btn{
            text-decoration: none;
            text-transform: uppercase;
            font-size: 2em;
            color: #fff ;
+           &:hover{
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%) hue-rotate(59deg) brightness(104%) contrast(100%);
+           }
         }
     }
 }

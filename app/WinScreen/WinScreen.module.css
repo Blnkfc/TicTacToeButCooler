@@ -7,11 +7,12 @@
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
-  background-color: #464a47;
+  background-color: #141615;
 }
 .WinScreen__alert {
   font-size: 8em;
   color: #fff;
+  filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em #e354d9);
 }
 .WinScreen__alert#first {
   transform: rotate(-90deg);
@@ -27,6 +28,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  height: 80%;
+  color: #fff;
+  filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em #e354d9);
 }
 .WinScreen__display__img {
   width: 20em;
@@ -35,11 +39,26 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.WinScreen__display__img::after {
+  position: absolute;
+  content: " ";
+  width: 20em;
+  height: 2em;
+  bottom: 0;
+  border-radius: 100%;
+  box-shadow: 0 0 5em rgba(227, 84, 217, 0.1);
+  filter: blur(5px) drop-shadow(0 0 5em #e354d9);
+  background-color: rgba(227, 84, 217, 0.1);
+}
 .WinScreen__display__btn {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 2em;
   color: #fff;
+}
+.WinScreen__display__btn:hover {
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%) hue-rotate(59deg) brightness(104%) contrast(100%);
 }
 
 @keyframes win-slide-in-1 {

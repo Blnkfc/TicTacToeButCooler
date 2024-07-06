@@ -3,6 +3,7 @@ import Link from "next/link"
 import styles from "./WinScreen.module.css"
 import { useStore } from "@/src/store";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 
 const WinScreen = () => {
@@ -28,7 +29,13 @@ const WinScreen = () => {
 
 
     return <div className={styles.WinScreen}>
-        <div className={styles.WinScreen__alert} id={styles.first} > Winner!!! </div>
+        <motion.div 
+        initial={{
+            
+        }}
+        className={styles.WinScreen__alert} 
+        id={styles.first} > Winner!!! 
+        </motion.div>
         <div className={styles.WinScreen__display} >
             <div 
             className={styles.WinScreen__display__img} 
