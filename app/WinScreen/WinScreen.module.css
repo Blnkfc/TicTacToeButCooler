@@ -7,10 +7,11 @@
   justify-content: space-around;
   align-items: center;
   font-weight: 700;
-  background-color: #fff;
+  background-color: #464a47;
 }
 .WinScreen__alert {
   font-size: 8em;
+  color: #fff;
 }
 .WinScreen__alert#first {
   transform: rotate(-90deg);
@@ -25,6 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 .WinScreen__display__img {
   width: 20em;
@@ -36,7 +38,8 @@
 .WinScreen__display__btn {
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  font-size: 2em;
+  color: #fff;
 }
 
 @keyframes win-slide-in-1 {

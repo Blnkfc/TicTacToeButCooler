@@ -1,7 +1,36 @@
 @import "../../variables.module";
 
 .footer{
-    height: 2em;
-    background-color: darken($color: $backgroundColor, $amount: 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    height: 7em;
+    background-color: $borderClassic;
     color: #fff;
+    width: 100%;
+    h2{
+        font-size: 1.3em;
+        text-transform: uppercase
+    }
+    &__contacts{
+        display: flex;
+        flex-wrap: wrap;
+        width: 60%;
+        justify-content: space-around;
+        &__media{
+            width: 3em;
+            height: 2em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            scale:0.8;
+            transition: all 0.1s;
+            -webkit-transition : -webkit-filter 500ms linear;
+            &:hover{
+                scale:1;
+                filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%);
+            }
+        }
+    }
 }

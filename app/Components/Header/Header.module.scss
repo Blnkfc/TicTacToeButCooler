@@ -1,8 +1,10 @@
+@import "../../variables.module";
+
 .header{
     display: flex;
     justify-content: space-between;
     height: 3em;
-    background-color: white;
+    background-color: lighten($color: $backgroundColor, $amount: 60);
     -webkit-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     -moz-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
@@ -13,17 +15,38 @@
     }
     &__settings{
         position: absolute;
-        background-color: lighten($color: #fff, $amount: 60);
+        background-color: lighten($color: $backgroundColor, $amount: 5);
+        color: #fff;
         width: 10em;
         height: 80vh;
         right: 0;
+        border: 3px solid $elementColor;
+        border-radius: 0.5em;
         transform: translateY(2.5em);
         padding: 0.5em 2em 0 1em ;
         z-index: 999;
         p{
             input{
-                width: 50%;
+                width: 35%;
+                aspect-ratio: 1;
+                background-color: transparent;
+                outline: none;
+                color: #fff;
+                font-size: 1.2em;
+                border: 2px solid $elementColor;
+                border-radius: 0.5em;
+                padding: 0.1em;
+                text-align: center;
+                &:focus{
+                    border-color: lighten($color: $elementColor , $amount: 20);
+                    filter: drop-shadow(0 0 0.1em #fff);
+                }
             }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+}
         }
         
 
@@ -34,6 +57,7 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
     &:hover &__layer{
         transform: rotate(90deg);
     }

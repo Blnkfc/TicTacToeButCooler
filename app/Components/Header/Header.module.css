@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   height: 3em;
-  background-color: white;
+  background-color: #e0e2e1;
   box-shadow: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.44);
 }
 .header img {
@@ -12,16 +12,37 @@
 }
 .header__settings {
   position: absolute;
-  background-color: white;
+  background-color: #525754;
+  color: #fff;
   width: 10em;
   height: 80vh;
   right: 0;
+  border: 3px solid #e354d9;
+  border-radius: 0.5em;
   transform: translateY(2.5em);
   padding: 0.5em 2em 0 1em;
   z-index: 999;
 }
 .header__settings p input {
-  width: 50%;
+  width: 35%;
+  aspect-ratio: 1;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 1.2em;
+  border: 2px solid #e354d9;
+  border-radius: 0.5em;
+  padding: 0.1em;
+  text-align: center;
+}
+.header__settings p input:focus {
+  border-color: #f1acec;
+  filter: drop-shadow(0 0 0.1em #fff);
+}
+.header__settings p input::-webkit-outer-spin-button,
+.header__settings p input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .burger {
@@ -29,6 +50,7 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
+  align-items: center;
 }
 .burger:hover .burger__layer {
   transform: rotate(90deg);

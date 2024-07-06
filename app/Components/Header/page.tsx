@@ -26,14 +26,16 @@ const Header = () => {
     }
 
 return <div className={styles.header} >
-        <img src="https://i.imgur.com/1tUDbyL.png" alt="Logo" />
+        <a href="/">
+            <img src="https://i.imgur.com/9h7Vqro.png" alt="Logo" />
+        </a>
         <div className={styles.burger} onClick={toggleSettings} >
             <div className={`${settingsToggle==false?styles.burger__layer:styles.burger__layer__toggled} `} ></div>
             <div className={`${settingsToggle==false?styles.burger__layer:styles.burger__layer__toggled} `} ></div>
             <div className={`${settingsToggle==false?styles.burger__layer:styles.burger__layer__toggled} `}  ></div>
         </div>
         <motion.div
-        initial={{ opacity: 0, scale:0,transform: "translateY(2.5em)", clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"}}
+        initial={{ opacity: 1, scale:0,transform: "translateY(3em)", clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"}}
         animate={{ opacity: settingsToggle ? 1 : 0, scale: settingsToggle ? 0 : 1, clipPath:settingsToggle?"polygon(0 0, 100% 0, 100% 100%, 0 100%)":"polygon(0 0, 100% 0, 100% 0, 0 0)"  }}
         exit={{ opacity: 0 }}
         className={styles.header__settings} 
