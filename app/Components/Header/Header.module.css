@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   height: 3em;
-  background-color: #e0e2e1;
+  background-color: black;
   box-shadow: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.44);
 }
 .header img {
@@ -12,7 +12,8 @@
 }
 .header__settings {
   position: absolute;
-  background-color: #525754;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 45%, rgb(37, 98, 97) 83%, rgb(130, 49, 124) 100%);
   color: #fff;
   width: 10em;
   height: 80vh;
@@ -28,7 +29,7 @@
   aspect-ratio: 1;
   background-color: transparent;
   outline: none;
-  color: #fff;
+  color: #3dd1ca;
   font-size: 1.2em;
   border: 2px solid #e354d9;
   border-radius: 0.5em;
@@ -36,7 +37,7 @@
   text-align: center;
 }
 .header__settings p input:focus {
-  border-color: #f1acec;
+  border-color: #8fe5e1;
   filter: drop-shadow(0 0 0.1em #fff);
 }
 .header__settings p input::-webkit-outer-spin-button,
@@ -59,7 +60,7 @@
   transform: translateX(0) rotate(90deg);
 }
 .burger__layer {
-  background-color: #000;
+  background-color: #fff;
   position: absolute;
   height: 0.2em;
   width: 1em;
@@ -72,7 +73,7 @@
   transform: translateY(150%);
 }
 .burger__layer__toggled {
-  background-color: #000;
+  background-color: #3dd1ca;
   position: absolute;
   transform: translateX(-20%) rotate(90deg);
   height: 0.2em;
@@ -81,7 +82,9 @@
 }
 .burger__layer__toggled:nth-child(1) {
   transform: translateX(-50%) rotate(90deg);
+  background-color: #fff;
 }
 .burger__layer__toggled:nth-last-child(1) {
   transform: translateX(10%) rotate(90deg);
+  background-color: #e354d9;
 }/*# sourceMappingURL=Header.module.css.map */

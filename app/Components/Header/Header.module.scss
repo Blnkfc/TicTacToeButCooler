@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     height: 3em;
-    background-color: lighten($color: $backgroundColor, $amount: 60);
+    background-color: darken($color: $backgroundColor, $amount: 100);
     -webkit-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     -moz-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
@@ -15,7 +15,8 @@
     }
     &__settings{
         position: absolute;
-        background-color: lighten($color: $backgroundColor, $amount: 5);
+        background: rgb(0,0,0);
+        background: linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(37,98,97,1) 83%, rgba(130,49,124,1) 100%);
         color: #fff;
         width: 10em;
         height: 80vh;
@@ -31,14 +32,14 @@
                 aspect-ratio: 1;
                 background-color: transparent;
                 outline: none;
-                color: #fff;
+                color: $accentColor;
                 font-size: 1.2em;
                 border: 2px solid $elementColor;
                 border-radius: 0.5em;
                 padding: 0.1em;
                 text-align: center;
                 &:focus{
-                    border-color: lighten($color: $elementColor , $amount: 20);
+                    border-color: lighten($color: $accentColor , $amount: 20);
                     filter: drop-shadow(0 0 0.1em #fff);
                 }
             }
@@ -67,7 +68,7 @@
 
         
     &__layer{
-        background-color: #000;
+        background-color: #fff;
         position: absolute;
         height: 0.2em;
         width: 1em;
@@ -80,7 +81,7 @@
         }
         
     &__toggled{
-        background-color: #000;
+        background-color: $accentColor;
         position: absolute;
         transform: translateX(-20%) rotate(90deg);
         height: 0.2em;
@@ -88,9 +89,11 @@
         transition: transform 0.2s;
         &:nth-child(1){
             transform: translateX(-50%) rotate(90deg);
+            background-color: #fff;
         }
         &:nth-last-child(1){
             transform: translateX(10%) rotate(90deg);
+            background-color: $elementColor;
         }
         
     }   
