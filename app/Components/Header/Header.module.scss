@@ -29,6 +29,9 @@
         transform: translateY(2.5rem);
         padding: 0.5em 2em 0 1em ;
         z-index: 999;
+        &__mobile{
+            display: none;
+        }
         p{
             input{
                 width: 35%;
@@ -116,6 +119,17 @@
         &__settings{
             position: absolute;
             transform: translateY(5em);
+            div{
+                width: 80%;
+                aspect-ratio: 1;
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
+            }
+            &__mobile{
+                display: block;
+            }
         }
     }
     .burger{

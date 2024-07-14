@@ -8,16 +8,49 @@
     height: 90dvh;
     padding: 2em 0 2em 0;
     &__background{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         position: absolute;
-        width: 20%;
-        aspect-ratio: 1;
-        z-index: 0;
-        opacity: 25%;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
-
+        width: 10em;
+        aspect-ratio: 0.7;
+        background-color: black;
+        left: 0.5em;
+        top:3.5em;
+        border-radius: 1em;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -0.1em; 
+            border-radius: inherit; 
+            background: rgb(32,176,174);
+            background: linear-gradient(150deg, rgba(32,176,174,1) 0%, rgba(227,84,217,1) 100%);
+          }
+        div{
+            width: 80%;
+            aspect-ratio: 0.7;
+            margin: 10%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
+        }
+        p{
+            position:absolute;
+            margin: 0.1em 0.1em;
+            top:0;
+            left: 0;
+            font-size: 2em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        
+    }
+    &__mobile__indicator{
+        display: none;
     }
 }
 .playfield{
@@ -97,7 +130,6 @@
                 background-position: center;
                 background-size: contain;
                 background-repeat: no-repeat;
-                transform-style: preserve-3d;
                 
             }
         }
@@ -124,5 +156,22 @@
         width: 90% !important;
         aspect-ratio: 1;
         height: auto;
+        
+
+    }
+    .board{
+        &__background{
+            display: none;
+        }
+        &__mobile__indicator{
+            display: block;
+            position: absolute;
+            font-size: 2em;
+            color: #fff;
+            top: 2.3em;
+            right: 0.5em;
+            font-weight: 700;
+            opacity: 20%;
+        }
     }
 }

@@ -87,9 +87,16 @@ const checkForWin = () => {
 
   return (
     <div className={styles.board}>
-      <div className={styles.board__background} style={{backgroundImage: "url('"+currentMove.toString()+"')"}} >
 
+      <div className={styles.board__background}  >
+        <p>Next:</p>
+        <div style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
       </div>
+
+      <div className={styles.board__mobile__indicator}>
+       Next player/Layout: &#10138;
+      </div>
+
     <div className={styles.playfield}  >
       {playfield}
     </div>

@@ -24,6 +24,9 @@
   padding: 0.5em 2em 0 1em;
   z-index: 999;
 }
+.header__settings__mobile {
+  display: none;
+}
 .header__settings p input {
   width: 35%;
   aspect-ratio: 1;
@@ -101,6 +104,17 @@
   .header__settings {
     position: absolute;
     transform: translateY(5em);
+  }
+  .header__settings div {
+    width: 80%;
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
+  }
+  .header__settings__mobile {
+    display: block;
   }
   .burger__layer {
     height: 0.4em;

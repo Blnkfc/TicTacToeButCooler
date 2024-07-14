@@ -7,7 +7,8 @@ import { motion } from "framer-motion"
 import {useStore} from "@/src/store"
 
 const Header = () => {
-    const {layout, setLayout, toggleWin} = useStore()
+    const {layout, setLayout, order} = useStore()
+    const moveSkin = useStore((state) => state.skinSet)
     const [rowCount, setRowCount] = useState("3")
     const [colCount, setColCount] = useState("3")
     const [settingsToggle, setSettingToggle] = useState(false)
@@ -21,9 +22,17 @@ const Header = () => {
     const toggleSettings = () => {
         setSettingToggle(!settingsToggle)
     }
-    const toggleWinCondition = () => {
-        toggleWin()
+
+    function isEven(order:number) {
+        return (order % 2 == 0);
     }
+  
+    const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
+
+    useEffect(() => {
+        isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
+      }, [order])
+
 
 return <div className={styles.header} >
         <a href="/">
@@ -43,6 +52,8 @@ return <div className={styles.header} >
             <h2>Layout:</h2>
             <p>Rows:<br/> <input type="number" placeholder={layout.rowCount.toString()=="0"?"3":layout.rowCount.toString()} id="row" onChange={(event) => setRowCount(event.target.value)} /></p> 
             <p>Columns:<br/> <input type="number" placeholder={layout.colCount.toString()=="0"?"3":layout.colCount.toString()} id="col" onChange={(event) => setColCount(event.target.value)} /></p>
+            <h2 className={styles.header__settings__mobile} >Next:</h2>
+            <div className={styles.header__settings__mobile}  style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
         </motion.div>
     </div>
 }
