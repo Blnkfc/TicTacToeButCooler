@@ -14,10 +14,11 @@
   position: absolute;
   width: 10em;
   aspect-ratio: 0.7;
-  background-color: black;
   left: 0.5em;
   top: 3.5em;
   border-radius: 1em;
+  background: rgb(32, 176, 174);
+  background: linear-gradient(150deg, rgb(32, 176, 174) 0%, rgb(227, 84, 217) 100%);
 }
 .board__background:before {
   content: "";
@@ -27,10 +28,9 @@
   bottom: 0;
   left: 0;
   z-index: -1;
-  margin: -0.1em;
+  margin: 0.2em;
   border-radius: inherit;
-  background: rgb(32, 176, 174);
-  background: linear-gradient(150deg, rgb(32, 176, 174) 0%, rgb(227, 84, 217) 100%);
+  background-color: black;
 }
 .board__background div {
   width: 80%;
@@ -43,7 +43,7 @@
 }
 .board__background p {
   position: absolute;
-  margin: 0.1em 0.1em;
+  margin: 0.2em 0.2em;
   top: 0;
   left: 0;
   font-size: 2em;

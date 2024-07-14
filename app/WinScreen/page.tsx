@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 
 const WinScreen = () => {
-    const {win, order, directionArray, skinSet, setDirectionArray, toggleWin, restartOrder} = useStore()
+    const {win, order, skinSet, setDirectionArray, toggleWin, restartOrder} = useStore()
     const [winnerSide, setWinnerSide] = useState("")
 
     useEffect(() => {

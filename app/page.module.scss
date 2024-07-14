@@ -15,19 +15,19 @@
         position: absolute;
         width: 10em;
         aspect-ratio: 0.7;
-        background-color: black;
         left: 0.5em;
         top:3.5em;
         border-radius: 1em;
+        background: rgb(32,176,174);
+        background: linear-gradient(150deg, rgba(32,176,174,1) 0%, rgba(227,84,217,1) 100%);
         &:before {
             content: '';
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
             z-index: -1;
-            margin: -0.1em; 
+            margin: 0.2em; 
             border-radius: inherit; 
-            background: rgb(32,176,174);
-            background: linear-gradient(150deg, rgba(32,176,174,1) 0%, rgba(227,84,217,1) 100%);
+            background-color: black;
           }
         div{
             width: 80%;
@@ -40,7 +40,7 @@
         }
         p{
             position:absolute;
-            margin: 0.1em 0.1em;
+            margin: 0.2em 0.2em;
             top:0;
             left: 0;
             font-size: 2em;

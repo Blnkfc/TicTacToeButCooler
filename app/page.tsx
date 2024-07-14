@@ -31,8 +31,7 @@ function hasThreeConsecutiveElements(arr: number[]) {
       if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2] && arr[i]!=2) {
           console.log(`FIRST TOGGLED WIN: ${win}`)
           toggleWin()
-          
-              
+          router.push("/WinScreen")
           return true; 
       }
   }
@@ -52,14 +51,6 @@ const checkForWin = () => {
     console.log(`DOES IT EVEN WORK ${rowCount}, ${colCount}`)
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
   },[rowCount, colCount, defaultCellValue])
- 
-
-  // TOGGLES WIN UPON win STATE FIELD CHANGE
-  useEffect(() => {
-    console.log(`TOGGLED WIN: ${win}`)
-    if(win)
-      router.push("/WinScreen")
-  }, [win])
 
 
 //DEBUGGING
@@ -80,6 +71,9 @@ const checkForWin = () => {
 
   const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
 
+
+//COULD TRY AND MAKE THIS CHECK IN THE DIV ITSELF TO AVOID USING THIS USEEFFECT
+
 // SETTING NEXT MOVE ELEMENT
   useEffect(() => {
     isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
@@ -90,15 +84,22 @@ const checkForWin = () => {
     <div className={styles.board}>
 
       <motion.div
+      initial={{
+        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'
+        
+      }}
       animate={{ 
-        opacity: 1,
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
         
        }}
       exit={{
         clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'
+        
       }}
-      transition={{ duration: 0.45 }}
+      transition={{ 
+        delay: 0.2,
+        duration: 0.45 
+      }}
 
       className={styles.board__background}  >
         <p>Next:</p>
