@@ -15,6 +15,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
 }
 
 .playfield {
