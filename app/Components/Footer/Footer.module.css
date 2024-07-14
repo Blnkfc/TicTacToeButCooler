@@ -46,4 +46,10 @@
   filter: blur(2px);
   box-shadow: 0 0.1em 1em #fff;
   transform: translateY(0.5em);
+}
+
+@media (max-width: 600px) {
+  .footer__contacts {
+    width: 100%;
+  }
 }/*# sourceMappingURL=Footer.module.css.map */

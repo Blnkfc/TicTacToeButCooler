@@ -1,4 +1,5 @@
 @import "../variables.module";
+
 .WinScreen{
     display: flex;
     flex-direction: row;
@@ -10,9 +11,10 @@
     font-weight: 700;
     background-color: darken($backgroundColor, 20%);
     &__alert{
-        font-size: 8em;
+        font-size: 10vw;
         color: #fff;
-        filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em $elementColor);
+        -webkit-text-stroke: 4px $accentColor;
+        filter: drop-shadow(0 0 0.07em $elementColor);
         &#first{
             transform: rotate(-90deg);
             animation: win-slide-in-1 0.5s linear ;
@@ -29,14 +31,18 @@
         align-items: center;
         justify-content: space-around;
         height: 80%; 
+        width: 23%;
         color: #fff;
-        filter: brightness(0) saturate(100%) invert(52%) sepia(78%) saturate(2691%) hue-rotate(275deg) brightness(93%) contrast(91%) drop-shadow(0 0 1em $elementColor);
         &__img{
-            width: 20em;
-            height: 20em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            aspect-ratio: 1;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            filter: drop-shadow(0 0 1em $accentColor);
             &::after{
                 position: absolute;
                 content: " ";
@@ -44,9 +50,10 @@
                 height: 2em;
                 bottom: 0;
                 border-radius: 100%;
-                box-shadow: 0 0 5em rgba(227, 84, 217, 10%);
-                filter: blur(5px) drop-shadow(0 0 5em $elementColor);
+                box-shadow: 0 0 5em rgba(5, 218, 197, 0.1);
+                filter: blur(5px) drop-shadow(0 0 5em $accentColor);
                 background-color: rgba(227, 84, 217, 10%);
+                transform: translateY(150%);
             }
         }
         &__btn{
@@ -54,9 +61,11 @@
            text-transform: uppercase;
            font-size: 2em;
            color: #fff ;
+           transition: all 0.2s;
            &:hover{
             cursor: pointer;
-            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(2%) hue-rotate(59deg) brightness(104%) contrast(100%);
+            -webkit-text-stroke: 1px $accentColor;
+            filter: drop-shadow(0 0 0.1em $elementColor);
            }
         }
     }
@@ -96,5 +105,17 @@
     100%{
         opacity: 1;
         transform: translateY(0%) rotate(90deg);
+    }
+}
+
+
+@media(max-width: 600px){
+    .WinScreen{
+        &__alert{
+            display: none;
+        }
+        &__display{
+            width: 90%;
+        }
     }
 }

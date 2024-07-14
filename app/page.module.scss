@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 90dvh;
     padding: 2em 0 2em 0;
     &__background{
         position: absolute;
@@ -24,7 +25,7 @@
     display: flex;
     flex-direction: column;
     width: 70% !important;
-    height: 90vh;
+    height: 85vh;
     justify-content: center;
     align-items: center;
     &__row{
@@ -80,7 +81,7 @@
             align-items: center;
             flex-grow: 1;
             background-color: transparent;
-            border:solid 5px $elementColor;
+            border:solid 5px $accentColor;
             &__fadeIn{
                 animation:cell-fade-in 0.3s infinite;
             }
@@ -97,7 +98,7 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 transform-style: preserve-3d;
-                filter: drop-shadow(0 0 0.1em rgba(255,255,255));
+                
             }
         }
     }
@@ -114,5 +115,14 @@
     }
     100%{
         opacity: 0;
+    }
+}
+
+
+@media(max-width: 600px){
+    .playfield{
+        width: 90% !important;
+        aspect-ratio: 1;
+        height: auto;
     }
 }

@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 90dvh;
   padding: 2em 0 2em 0;
 }
 .board__background {
@@ -21,7 +22,7 @@
   display: flex;
   flex-direction: column;
   width: 70% !important;
-  height: 90vh;
+  height: 85vh;
   justify-content: center;
   align-items: center;
 }
@@ -67,7 +68,7 @@
   align-items: center;
   flex-grow: 1;
   background-color: transparent;
-  border: solid 5px #e354d9;
+  border: solid 5px #20b0ae;
 }
 .playfield__row__cell__fadeIn {
   animation: cell-fade-in 0.3s infinite;
@@ -85,7 +86,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   transform-style: preserve-3d;
-  filter: drop-shadow(0 0 0.1em rgb(255, 255, 255));
 }
 
 @keyframes cell-spin-in {
@@ -102,5 +102,12 @@
   }
   100% {
     opacity: 0;
+  }
+}
+@media (max-width: 600px) {
+  .playfield {
+    width: 90% !important;
+    aspect-ratio: 1;
+    height: auto;
   }
 }/*# sourceMappingURL=page.module.css.map */

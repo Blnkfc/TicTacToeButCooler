@@ -3,19 +3,22 @@
 .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 3em;
     background-color: darken($color: $backgroundColor, $amount: 100);
     -webkit-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     -moz-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
-    img{
-        width: 2em;
-        height: 2em;
-        margin: 0.5em;
+    a{
+        
+        img{
+            width: 2em;
+            height: 2em;
+            margin: 0.5em;
+        }
     }
     &__settings{
         position: absolute;
-        background: rgb(0,0,0);
         background: linear-gradient(180deg, rgba(0,0,0,1) 45%, rgba(37,98,97,1) 83%, rgba(130,49,124,1) 100%);
         color: #fff;
         width: 10em;
@@ -23,7 +26,7 @@
         right: 0;
         border: 3px solid $elementColor;
         border-radius: 0.5em;
-        transform: translateY(2.5em);
+        transform: translateY(2.5rem);
         padding: 0.5em 2em 0 1em ;
         z-index: 999;
         p{
@@ -55,6 +58,7 @@
 }
 .burger{
     width: 3em;
+    height: 3em;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -100,3 +104,25 @@
     }
 }
 
+@media (max-width: 600px) {
+    .header{
+        height: 5em;
+        a{
+            img{
+                width: 4em;
+                height: 4em;
+            }
+        }
+        &__settings{
+            position: absolute;
+            transform: translateY(5em);
+        }
+    }
+    .burger{
+        &__layer{
+            height: 0.4em;
+            width: 2em;
+            
+        }
+    }
+}

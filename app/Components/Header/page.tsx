@@ -35,7 +35,7 @@ return <div className={styles.header} >
             <div className={`${settingsToggle==false?styles.burger__layer:styles.burger__layer__toggled} `}  ></div>
         </div>
         <motion.div
-        initial={{ opacity: 1, scale:0,transform: "translateY(3em)", clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"}}
+        initial={{ opacity: 1, scale:0,transform: "translateY(56%)", clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"}}
         animate={{ opacity: settingsToggle ? 1 : 0, scale: settingsToggle ? 0 : 1, clipPath:settingsToggle?"polygon(0 0, 100% 0, 100% 100%, 0 100%)":"polygon(0 0, 100% 0, 100% 0, 0 0)"  }}
         exit={{ opacity: 0 }}
         className={styles.header__settings} 

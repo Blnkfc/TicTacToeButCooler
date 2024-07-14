@@ -55,22 +55,7 @@ const Cell = (props: CellProps) => {
         return (order % 2 == 0);
     }
 
-    function hasThreeConsecutiveElements(arr: number[]) {
-        //console.log(`ARRAY: ${arr}`)
-        if (arr.length < 3) {
-            return false; 
-        }
-        for (let i = 0; i <= arr.length - 3; i++) {
-            if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2] && arr[i]!=2) {
-                console.log(`FIRST TOGGLED WIN: ${win}`)
-                toggleWin()
-                
-                    
-                return true; 
-            }
-        }
-        return false; 
-    }
+    
 
 
     const getHorizontal = (index: number, jdex:number) => {
@@ -122,16 +107,8 @@ const Cell = (props: CellProps) => {
     }
 
     
-    const checkForWin = () => {
-        hasThreeConsecutiveElements(directionArray.horizontal)
-        hasThreeConsecutiveElements(directionArray.vertical)
-        hasThreeConsecutiveElements(directionArray.diagonal)
-        hasThreeConsecutiveElements(directionArray.antiDiagonal)
-    }
+   
     
-    useEffect(() => {
-        checkForWin()
-    }, [directionArray])
     
 
     const doAStep = (value: number) => {
@@ -179,7 +156,9 @@ const Cell = (props: CellProps) => {
         clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)"
       }}
       transition={{ duration: 0.45 }}
-    className={styles.playfield__row__cell}  
+    
+      className={styles.playfield__row__cell}  
+    
     onClick={() => {doAStep(cellState)}} >
         <div 
         style={{
