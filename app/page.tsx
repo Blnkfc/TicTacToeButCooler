@@ -6,6 +6,7 @@ import { useStore } from "../src/store";
 import { useEffect, useState } from "react";
 import { Content } from "next/font/google";
 import { useRouter } from "next/navigation"
+import { motion } from "framer-motion";
 
 
 
@@ -88,10 +89,21 @@ const checkForWin = () => {
   return (
     <div className={styles.board}>
 
-      <div className={styles.board__background}  >
+      <motion.div
+      animate={{ 
+        opacity: 1,
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
+        
+       }}
+      exit={{
+        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)'
+      }}
+      transition={{ duration: 0.45 }}
+
+      className={styles.board__background}  >
         <p>Next:</p>
         <div style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
-      </div>
+      </motion.div>
 
       <div className={styles.board__mobile__indicator}>
        Next player/Layout: &#10138;
