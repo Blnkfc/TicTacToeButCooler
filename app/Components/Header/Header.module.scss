@@ -122,7 +122,11 @@
         &__layer{
             height: 0.4em;
             width: 2em;
-            
+            &__toggled{
+                height: 0.4em;
+                width: 2em;
+            }
         }
+        
     }
 }

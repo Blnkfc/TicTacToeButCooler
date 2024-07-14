@@ -106,4 +106,8 @@
     height: 0.4em;
     width: 2em;
   }
+  .burger__layer__toggled {
+    height: 0.4em;
+    width: 2em;
+  }
 }/*# sourceMappingURL=Header.module.css.map */
