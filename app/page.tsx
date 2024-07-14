@@ -106,9 +106,13 @@ const checkForWin = () => {
         <div style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
       </motion.div>
 
-      <div className={styles.board__mobile__indicator}>
-       Next player/Layout: &#10138;
+      <div className={styles.board__mobile__indicator} id={styles.right}>
+      <span> &#10138; </span> Next player 
       </div>
+      <div className={styles.board__mobile__indicator} id={styles.left}>
+      Layout: &#10138;
+      </div>
+      
 
     <div className={styles.playfield}  >
       {playfield}

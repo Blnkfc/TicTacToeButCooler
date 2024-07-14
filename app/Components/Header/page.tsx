@@ -36,7 +36,7 @@ const Header = () => {
 
 return <div className={styles.header} >
         <a href="/">
-            <img src="https://i.imgur.com/9h7Vqro.png" alt="Logo" />
+            <img src={currentMove.toString()} alt="Logo" />
         </a>
         <div className={styles.burger} onClick={toggleSettings} >
             <div className={`${settingsToggle==false?styles.burger__layer:styles.burger__layer__toggled} `} ></div>
@@ -53,7 +53,7 @@ return <div className={styles.header} >
             <p>Rows:<br/> <input type="number" placeholder={layout.rowCount.toString()=="0"?"3":layout.rowCount.toString()} id="row" onChange={(event) => setRowCount(event.target.value)} /></p> 
             <p>Columns:<br/> <input type="number" placeholder={layout.colCount.toString()=="0"?"3":layout.colCount.toString()} id="col" onChange={(event) => setColCount(event.target.value)} /></p>
             <h2 className={styles.header__settings__mobile} >Next:</h2>
-            <div className={styles.header__settings__mobile}  style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
+            <div   style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
         </motion.div>
     </div>
 }

@@ -16,8 +16,8 @@ export const useStore = create<Store>()((set) => ({
    order: 0,
    skinSet: {
     classic:{
-      X:"https://imgur.com/9h7Vqro",
-      O:"https://imgur.com/vYbErYP"
+      X:"https://i.imgur.com/9h7Vqro.png",
+      O:"https://i.imgur.com/vYbErYP.png"
     }
    },
    directionArray:{

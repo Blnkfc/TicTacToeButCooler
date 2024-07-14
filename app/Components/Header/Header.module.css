@@ -7,9 +7,12 @@
   box-shadow: inset 0px -2px 5px 0px rgba(0, 0, 0, 0.44);
 }
 .header a img {
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
   margin: 0.5em;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .header__settings {
   position: absolute;
@@ -93,7 +96,7 @@
   background-color: #e354d9;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .header {
     height: 5em;
   }

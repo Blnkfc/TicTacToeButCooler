@@ -10,11 +10,13 @@
     -moz-box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     box-shadow: inset 0px -2px 5px 0px rgba(0,0,0,0.44);
     a{
-        
         img{
-            width: 2em;
-            height: 2em;
+            width: 3em;
+            height: 3em;
             margin: 0.5em;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
         }
     }
     &__settings{
@@ -107,7 +109,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media screen and ( max-width: 600px ){
     .header{
         height: 5em;
         a{

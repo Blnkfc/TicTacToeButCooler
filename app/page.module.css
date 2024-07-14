@@ -51,7 +51,23 @@
   color: #fff;
 }
 .board__mobile__indicator {
-  display: none;
+  position: absolute;
+  font-size: 2em;
+  color: #fff;
+  font-weight: 700;
+  opacity: 0;
+}
+.board__mobile__indicator#right {
+  top: 2.3em;
+  left: 0.5em;
+}
+.board__mobile__indicator#right span {
+  display: inline-block;
+  transform: scale(-1, 1);
+}
+.board__mobile__indicator#left {
+  top: 2.3em;
+  right: 0.5em;
 }
 
 .playfield {
@@ -140,7 +156,7 @@
     opacity: 0;
   }
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .playfield {
     width: 90% !important;
     aspect-ratio: 1;
@@ -150,13 +166,6 @@
     display: none;
   }
   .board__mobile__indicator {
-    display: block;
-    position: absolute;
-    font-size: 2em;
-    color: #fff;
-    top: 2.3em;
-    right: 0.5em;
-    font-weight: 700;
-    opacity: 20%;
+    opacity: 0.2;
   }
 }/*# sourceMappingURL=page.module.css.map */
