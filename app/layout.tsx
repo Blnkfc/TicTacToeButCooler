@@ -7,6 +7,7 @@ import Header from "./Components/Header/page"
 import StoreInitializer from "./StoreInitializer/storeinitializer";
 import {useStore} from "../src/store"
 import {Store} from "../interfaceList"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 
@@ -71,6 +72,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="container">
+        <SpeedInsights />
         <StoreInitializer 
         layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
         skinSet={data.skinSet} directionArray={data.directionArray} lastChangedCell={data.lastChangedCell} win={data.win} />
