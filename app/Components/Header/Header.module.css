@@ -50,7 +50,12 @@
   filter: grayscale(100%);
 }
 .header__settings__mode__btnActive {
+  border: 2px solid #20b0ae !important;
   filter: drop-shadow(0 0 0.5em #20b0ae);
+}
+.header__settings__mode__info {
+  font-size: 0.8em;
+  color: #acb0ad;
 }
 .header__settings__mobile {
   display: none;

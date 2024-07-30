@@ -22,6 +22,7 @@ const Header = () => {
     //Usestate for the url of the current skin img
     const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
 
+    console.log(`MODE${mode}`)
 
     //Setting the current move value on order change
     //Value is a url for the image of current skin
@@ -79,8 +80,14 @@ return <div className={styles.header} >
             <section className={styles.header__settings__mode}>
                 <button className={`${styles.header__settings__mode__btnEnabled} 
                                     ${mode.classic?styles.header__settings__mode__btnActive:""}`} >1</button>
-                <button className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
-                                    ${mode.blocker?styles.header__settings__mode__btnActive:""}`} >2</button>
+                <button title="Minimal size is 5x5" className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
+                                    ${mode.blocker?styles.header__settings__mode__btnActive:""} `} >2</button>
+            </section>
+            <section className={styles.header__settings__mode__info} >
+                <p><b>Classic mode(1)</b> ^ </p>
+                <span>Regular tic-tac-toe with 3 in a row = win.</span>
+                <p><b>Blocker mode(2)</b> ^ </p>
+                <span>A mode where random amount of cells will be blocked for a couple of moves, <b>5x5 and larger board required</b>.</span>   
             </section>
             <h2 className={styles.header__settings__mobile} >Next:</h2>
             <div   style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
