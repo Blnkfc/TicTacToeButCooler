@@ -12,6 +12,10 @@ export const useStore = create<Store>()((set) => ({
       colCount: 3,
       defaultCellValue: 2
    },
+   mode:{
+        classic: true,
+        blocker: false
+   },
    saturatedPlayfield:[[0]],
    order: 0,
    skinSet: {
@@ -29,6 +33,10 @@ export const useStore = create<Store>()((set) => ({
    lastChangedCell:0,
    win: false,
 
+   setMode: (mode: {classic: boolean, blocker: boolean}) => {set((state) => ({
+    ...state,
+      mode: mode
+   }) )},
 
    toggleOrder: () => set((state) => ({order: state.order + 1})),
 

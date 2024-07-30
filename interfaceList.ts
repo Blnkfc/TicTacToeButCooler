@@ -8,10 +8,16 @@ export interface Layout{
     rowCount: number,
     colCount: number,
     defaultCellValue: number
- }
+}
+
+export interface Mode{
+    classic: boolean,
+    blocker: boolean
+}
 
 export interface InitializeProps {
     layout: Layout,
+    mode: Mode,
     order: number
     saturatedPlayfield: number[][],
     skinSet: SkinSet,
@@ -35,8 +41,10 @@ export interface DirectionArray{
 }
 
 
+
 export interface Store {
     layout: Layout,
+    mode: Mode,
     saturatedPlayfield: number[][]
     order:number,
     skinSet:SkinSet,
@@ -44,7 +52,7 @@ export interface Store {
     lastChangedCell: number,
     win: boolean,
 
-
+    setMode: Function,
     toggleOrder:Function,
     restartOrder: Function,
     setLayout:Function,

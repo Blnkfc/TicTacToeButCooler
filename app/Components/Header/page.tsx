@@ -7,31 +7,54 @@ import { motion } from "framer-motion"
 import {useStore} from "@/src/store"
 
 const Header = () => {
-    const {layout, setLayout, order} = useStore()
+    //IMPORTING: Layout dimensions and default values,
+    //Setter function to change layout dimensions,
+    //Order value of the move,
+    //Current enabled mode and setter function for it,
+    //Skinset of the X and O
+    const {layout,mode, setLayout, setMode, order} = useStore()
     const moveSkin = useStore((state) => state.skinSet)
+    //Creating useState for the layout dimensions,
+    //variable for toggling the settings display
     const [rowCount, setRowCount] = useState("3")
     const [colCount, setColCount] = useState("3")
     const [settingsToggle, setSettingToggle] = useState(false)
+    //Usestate for the url of the current skin img
+    const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
 
+
+    //Setting the current move value on order change
+    //Value is a url for the image of current skin
+    //is used as a background on move
+    useEffect(() => {
+        isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
+      }, [order])
+
+    //Setting the layout dimesion on rowCount and colCount change
     useEffect(() => {
         console.log(`ROWS: ${layout.rowCount.toString()}, COLS: ${layout.colCount.toString()}`)
         console.log(`OTHER ROWS: ${rowCount}, COLS: ${colCount}`)
         setLayout(Number(rowCount), Number(colCount), 2)
     }, [rowCount, colCount])
    
+    //Toggling the display value of settings block
     const toggleSettings = () => {
         setSettingToggle(!settingsToggle)
     }
 
+    //Check for even order value of the move
     function isEven(order:number) {
         return (order % 2 == 0);
     }
-  
-    const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
+    
+    //Check for the layout dimensions to be >= 5X5 
+    const [isBigEnough, setIsBigEnough] = useState(false)
 
     useEffect(() => {
-        isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
-      }, [order])
+        if(layout.colCount < 5 || layout.rowCount < 5)
+            setIsBigEnough(false) 
+        else setIsBigEnough(true)
+    }, [layout])
 
 
 return <div className={styles.header} >
@@ -52,6 +75,13 @@ return <div className={styles.header} >
             <h2>Layout:</h2>
             <p>Rows:<br/> <input type="number" placeholder={layout.rowCount.toString()=="0"?"3":layout.rowCount.toString()} id="row" onChange={(event) => setRowCount(event.target.value)} /></p> 
             <p>Columns:<br/> <input type="number" placeholder={layout.colCount.toString()=="0"?"3":layout.colCount.toString()} id="col" onChange={(event) => setColCount(event.target.value)} /></p>
+            <h2>Mode:</h2>
+            <section className={styles.header__settings__mode}>
+                <button className={`${styles.header__settings__mode__btnEnabled} 
+                                    ${mode.classic?styles.header__settings__mode__btnActive:""}`} >1</button>
+                <button className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
+                                    ${mode.blocker?styles.header__settings__mode__btnActive:""}`} >2</button>
+            </section>
             <h2 className={styles.header__settings__mobile} >Next:</h2>
             <div   style={{backgroundImage: "url('"+currentMove.toString()+"')"}} ></div>
         </motion.div>

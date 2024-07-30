@@ -4,6 +4,10 @@
         "colCount": 3,
         "defaultCellValue": 2
     },
+    "mode":{
+        "classic": true,
+        "blocker": false
+    },
     "saturatedPlayfield": [],
     "order": 0,
     "skinSet":{

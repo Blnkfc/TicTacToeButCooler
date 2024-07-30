@@ -59,6 +59,7 @@ export default async function RootLayout({
 
   useStore.setState({
     layout: data.layout,
+    mode: data.mode,
     saturatedPlayfield: data.saturatedPlayfield,
     order: data.order,
     skinSet: data.skinSet,
@@ -74,7 +75,7 @@ export default async function RootLayout({
       <body className="container">
         <SpeedInsights />
         <StoreInitializer 
-        layout={data.layout} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
+        layout={data.layout} mode={data.mode} order={data.order} saturatedPlayfield={data.saturatedPlayfield} 
         skinSet={data.skinSet} directionArray={data.directionArray} lastChangedCell={data.lastChangedCell} win={data.win} />
         
         <main className={lato.className} >

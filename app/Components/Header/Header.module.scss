@@ -31,6 +31,31 @@
         transform: translateY(2.5rem);
         padding: 0.5em 2em 0 1em ;
         z-index: 999;
+        &__mode{
+            display: flex;
+            gap: 0.5em;
+            align-items: center;
+            width: 100%;
+            button{
+                padding: 0.5em;
+                background-color: $elementColor;
+                width: 40%;
+                color: #fff;
+                border: 2px solid $elementColor;
+                border-radius: 0.5em ;
+                font-size: 1em;
+                font-weight: bold;
+            }
+            &__btnEnabled{
+                filter: drop-shadow(0 0 0.5em $elementColor)
+            }
+            &__btnDisabled{
+                filter:grayscale(100%) ;
+            }
+            &__btnActive{
+                filter: drop-shadow(0 0 0.5em $accentColor)
+            }
+        }
         &__mobile{
             display: none;
         }
@@ -129,6 +154,7 @@
                 background-repeat: no-repeat;
                 filter: brightness(0) saturate(100%) invert(55%) sepia(69%) saturate(460%) hue-rotate(130deg) brightness(92%) contrast(93%);
             }
+            
             &__mobile{
                 display: block;
             }

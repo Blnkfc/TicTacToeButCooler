@@ -27,6 +27,31 @@
   padding: 0.5em 2em 0 1em;
   z-index: 999;
 }
+.header__settings__mode {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  width: 100%;
+}
+.header__settings__mode button {
+  padding: 0.5em;
+  background-color: #e354d9;
+  width: 40%;
+  color: #fff;
+  border: 2px solid #e354d9;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: bold;
+}
+.header__settings__mode__btnEnabled {
+  filter: drop-shadow(0 0 0.5em #e354d9);
+}
+.header__settings__mode__btnDisabled {
+  filter: grayscale(100%);
+}
+.header__settings__mode__btnActive {
+  filter: drop-shadow(0 0 0.5em #20b0ae);
+}
 .header__settings__mobile {
   display: none;
 }
