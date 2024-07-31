@@ -4,7 +4,7 @@
         "colCount": 3,
         "defaultCellValue": 2
     },
-    "mode":[
+    "modes":[
         {
             "id": 1,
             "name": "classic",

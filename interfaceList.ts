@@ -18,7 +18,7 @@ export interface Mode{
 
 export interface InitializeProps {
     layout: Layout,
-    mode: Mode,
+    modes: Mode[],
     order: number
     saturatedPlayfield: number[][],
     skinSet: SkinSet,
