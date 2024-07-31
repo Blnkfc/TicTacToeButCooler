@@ -11,8 +11,9 @@ export interface Layout{
 }
 
 export interface Mode{
-    classic: boolean,
-    blocker: boolean
+    id: number,
+    name: string,
+    isActive: boolean
 }
 
 export interface InitializeProps {
@@ -44,7 +45,7 @@ export interface DirectionArray{
 
 export interface Store {
     layout: Layout,
-    mode: Mode,
+    modes: Mode[],
     saturatedPlayfield: number[][]
     order:number,
     skinSet:SkinSet,
@@ -52,7 +53,7 @@ export interface Store {
     lastChangedCell: number,
     win: boolean,
 
-    setMode: Function,
+
     toggleOrder:Function,
     restartOrder: Function,
     setLayout:Function,

@@ -4,10 +4,10 @@ import { useStore} from "../../src/store"
 import { InitializeProps } from "../../interfaceList"
 
 
-const StoreInitializer = ({layout, mode, order, saturatedPlayfield, skinSet, directionArray, lastChangedCell, win}: InitializeProps) => {
+const StoreInitializer = ({layout, modes, order, saturatedPlayfield, skinSet, directionArray, lastChangedCell, win}: InitializeProps) => {
     
     const initializeLayout = useRef(false)
-    const initializeMode = useRef(false)
+    const initializeModes = useRef(false)
     const initializeOrder = useRef(false)
     const initializeSaturatedPlayfield = useRef(false) 
     const initializeSkinSet = useRef(false)
@@ -20,9 +20,9 @@ const StoreInitializer = ({layout, mode, order, saturatedPlayfield, skinSet, dir
         useStore.setState({layout})
         initializeLayout.current = true
     }
-    if(!initializeMode.current){
-        useStore.setState({mode})
-        initializeMode.current = true
+    if(!initializeModes.current){
+        useStore.setState({modes})
+        initializeModes.current = true
     }
     if(!initializeOrder.current){
         useStore.setState({order})

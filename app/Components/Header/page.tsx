@@ -12,7 +12,7 @@ const Header = () => {
     //Order value of the move,
     //Current enabled mode and setter function for it,
     //Skinset of the X and O
-    const {layout,mode, setLayout, setMode, order} = useStore()
+    const {layout,modes, setLayout, order} = useStore()
     const moveSkin = useStore((state) => state.skinSet)
     //Creating useState for the layout dimensions,
     //variable for toggling the settings display
@@ -22,7 +22,7 @@ const Header = () => {
     //Usestate for the url of the current skin img
     const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
 
-    console.log(`MODE${mode}`)
+
 
     //Setting the current move value on order change
     //Value is a url for the image of current skin
@@ -79,9 +79,9 @@ return <div className={styles.header} >
             <h2>Mode:</h2>
             <section className={styles.header__settings__mode}>
                 <button className={`${styles.header__settings__mode__btnEnabled} 
-                                    ${mode.classic?styles.header__settings__mode__btnActive:""}`} >1</button>
+                                    `} >1</button>
                 <button title="Minimal size is 5x5" className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
-                                    ${mode.blocker?styles.header__settings__mode__btnActive:""} `} >2</button>
+                                     `} >2</button>
             </section>
             <section className={styles.header__settings__mode__info} >
                 <p><b>Classic mode(1)</b> ^ </p>
@@ -95,4 +95,6 @@ return <div className={styles.header} >
     </div>
 }
 
+//${mode.classic?styles.header__settings__mode__btnActive:""}
+//${mode.blocker?styles.header__settings__mode__btnActive:""}
 export default Header
