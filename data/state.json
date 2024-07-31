@@ -16,6 +16,7 @@
             "isActive": false
         }
     ],
+    "currentActiveMode": "classic",
     "saturatedPlayfield": [],
     "order": 0,
     "skinSet":{

@@ -19,7 +19,8 @@ export interface Mode{
 export interface InitializeProps {
     layout: Layout,
     modes: Mode[],
-    order: number
+    currentActiveMode: string,
+    order: number,
     saturatedPlayfield: number[][],
     skinSet: SkinSet,
     directionArray: DirectionArray,
@@ -46,6 +47,7 @@ export interface DirectionArray{
 export interface Store {
     layout: Layout,
     modes: Mode[],
+    currentActiveMode: string,
     saturatedPlayfield: number[][]
     order:number,
     skinSet:SkinSet,
@@ -55,6 +57,7 @@ export interface Store {
 
     toggleClassicMode: Function,
     toggleBlockerMode: Function,
+    setCurrentActiveMode: Function,
     toggleOrder:Function,
     restartOrder: Function,
     setLayout:Function,

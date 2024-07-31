@@ -10,12 +10,13 @@ import { motion } from "framer-motion";
 
 
 
-  const Home = () => {
-  const {order, saturatedPlayfield, win, directionArray, toggleWin} = useStore()
+const Home = () => {
+  const{order, currentActiveMode, saturatedPlayfield, win, directionArray, toggleWin} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
+
 
 //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {

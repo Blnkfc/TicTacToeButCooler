@@ -19,6 +19,7 @@ export const useStore = create<Store>()((set) => ({
       isActive: true
     }
    ],
+   currentActiveMode: "classic",
    saturatedPlayfield:[[0]],
    order: 0,
    skinSet: {
@@ -70,9 +71,14 @@ export const useStore = create<Store>()((set) => ({
     }));
   },
 
-   toggleOrder: () => set((state) => ({order: state.order + 1})),
+  setCurrentActiveMode: () => {
+    set((state) => ({
+      currentActiveMode: state.modes.filter((m) => {m.isActive})[0].name
+    }))},
 
-   restartOrder: () => set((state) => ({order: 0})),
+  toggleOrder: () => set((state) => ({order: state.order + 1})),
+
+  restartOrder: () => set((state) => ({order: 0})),
 
    setLayout: (rowCount:number, colCount:number, defaultCellValue:number) => set((state) => ({
       ...state,
