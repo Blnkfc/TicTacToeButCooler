@@ -5,6 +5,7 @@ import styles from "./Header.module.css"
 import Image from 'next/image'
 import { motion } from "framer-motion"
 import {useStore} from "@/src/store"
+import { Mode } from "@/interfaceList"
 
 const Header = () => {
     //IMPORTING: Layout dimensions and default values,
@@ -12,7 +13,7 @@ const Header = () => {
     //Order value of the move,
     //Current enabled mode and setter function for it,
     //Skinset of the X and O
-    const {layout, modes, setLayout, order} = useStore()
+    const {layout, modes, setLayout, toggleClassicMode, toggleBlockerMode, order} = useStore()
     const moveSkin = useStore((state) => state.skinSet)
     //Creating useState for the layout dimensions,
     //variable for toggling the settings display
@@ -21,9 +22,19 @@ const Header = () => {
     const [settingsToggle, setSettingToggle] = useState(false)
     //Usestate for the url of the current skin img
     const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
+    const [blockerMode, setBlockerMode] = useState<Mode[]>([])
+    const [classicMode, setClassicMode] = useState<Mode[]>([])
 
+    useEffect(() => {
+        setClassicMode(modes.filter((m) => m.name === "classic"))
 
-    console.log(`MODES: ${JSON.stringify(modes)}`)
+        setBlockerMode(modes.filter((m) => m.name === "blocker"))
+        
+    }, [modes])
+    const toggleClassic = () => {toggleClassicMode()}
+    const toggleBlocker = () => {toggleBlockerMode()}
+
+    console.log(`CLASSIC: ${JSON.stringify(classicMode)} BLOCKER: ${JSON.stringify(blockerMode)}`)
 
     //Setting the current move value on order change
     //Value is a url for the image of current skin
@@ -80,9 +91,11 @@ return <div className={styles.header} >
             <h2>Mode:</h2>
             <section className={styles.header__settings__mode}>
                 <button className={`${styles.header__settings__mode__btnEnabled} 
-                                    ${modes.filter((m) => m.name="classic" )[0].isActive?styles.header__settings__mode__btnActive:""}`} >1</button>
+                                    ${!classicMode[0]?.isActive?"":styles.header__settings__mode__btnActive}`} 
+                        onClick={toggleClassic} >1</button>
                 <button title="Minimal size is 5x5" className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
-                                    ${modes.filter((m) => m.name="blocker" )[0].isActive?styles.header__settings__mode__btnActive:""} `} >2</button>
+                                    ${!blockerMode[0]?.isActive?"":styles.header__settings__mode__btnActive} `} 
+                        onClick={toggleBlocker} >2</button>
             </section>
             <section className={styles.header__settings__mode__info} >
                 <p><b>Classic mode(1)</b> ^ </p>
@@ -96,5 +109,7 @@ return <div className={styles.header} >
     </div>
 }
 
+//
+//
 
 export default Header

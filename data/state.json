@@ -6,12 +6,12 @@
     },
     "modes":[
         {
-            "id": 1,
+            "id": 0,
             "name": "classic",
             "isActive": true
         },
         {
-            "id": 2,
+            "id": 1,
             "name": "blocker",
             "isActive": false
         }

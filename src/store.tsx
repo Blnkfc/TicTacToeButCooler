@@ -14,7 +14,7 @@ export const useStore = create<Store>()((set) => ({
    },
    modes:[
     {
-      id: 1,
+      id: 0,
       name: "classic",
       isActive: true
     }
@@ -36,7 +36,40 @@ export const useStore = create<Store>()((set) => ({
    lastChangedCell:0,
    win: false,
 
-   
+   toggleClassicMode: () => {
+    set((state) => ({
+      modes: [
+        {
+          id: 0,
+          name: "classic",
+          isActive: true
+        },
+        {
+          id: 1,
+          name: "blocker",
+          isActive: false
+        }
+      ]
+    }));
+  },
+
+  toggleBlockerMode: () => {
+    set((state) => ({
+      modes: [
+        {
+          id: 0,
+          name: "classic",
+          isActive: false
+        },
+        {
+          id: 1,
+          name: "blocker",
+          isActive: true
+        }
+      ]
+    }));
+  },
+
    toggleOrder: () => set((state) => ({order: state.order + 1})),
 
    restartOrder: () => set((state) => ({order: 0})),

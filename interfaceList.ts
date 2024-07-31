@@ -53,7 +53,8 @@ export interface Store {
     lastChangedCell: number,
     win: boolean,
 
-
+    toggleClassicMode: Function,
+    toggleBlockerMode: Function,
     toggleOrder:Function,
     restartOrder: Function,
     setLayout:Function,
