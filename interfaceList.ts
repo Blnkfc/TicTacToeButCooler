@@ -32,7 +32,8 @@ export interface SkinSet{
     classic:{
         X:string,
         O:string
-    }
+    },
+    blocker: string
 }
 
 export interface DirectionArray{
@@ -57,6 +58,7 @@ export interface Store {
 
     toggleClassicMode: Function,
     toggleBlockerMode: Function,
+    setBlocker: Function,
     setCurrentActiveMode: Function,
     toggleOrder:Function,
     restartOrder: Function,

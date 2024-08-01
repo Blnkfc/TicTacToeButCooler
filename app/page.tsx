@@ -11,12 +11,19 @@ import { motion } from "framer-motion";
 
 
 const Home = () => {
-  const{order, currentActiveMode, saturatedPlayfield, win, directionArray, toggleWin} = useStore()
+  const{order, modes, saturatedPlayfield, win, directionArray, toggleWin, setBlocker} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
 
+  useEffect(() => {
+    if(modes.filter((m) => m.name == "blocker")[0]?.isActive){
+      for(let i=0;i<3;i++){
+        setBlocker(saturatedPlayfield)
+      }
+    }
+  }, [modes])  
 
 //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {
@@ -30,7 +37,6 @@ function hasThreeConsecutiveElements(arr: number[]) {
   }
   for (let i = 0; i <= arr.length - 3; i++) {
       if (arr[i] === arr[i + 1] && arr[i + 1] === arr[i + 2] && arr[i]!=2) {
-          console.log(`FIRST TOGGLED WIN: ${win}`)
           toggleWin()
           router.push("/WinScreen")
           return true; 
@@ -49,15 +55,11 @@ const checkForWin = () => {
 
 // LOAD THE LAYOUT UPON UPDATING THE STATE
   useEffect(() => {
-    console.log(`DOES IT EVEN WORK ${rowCount}, ${colCount}`)
+    console.log(saturatedPlayfield)
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
-  },[rowCount, colCount, defaultCellValue])
+  },[rowCount, colCount])
 
 
-//DEBUGGING
-  useEffect(() => {
-      console.log(saturatedPlayfield)
-  }, [saturatedPlayfield])
   console.log(`SPP: ${saturatedPlayfield}`)
 
   const playfield = saturatedPlayfield.map

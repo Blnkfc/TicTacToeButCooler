@@ -13,7 +13,7 @@ const Header = () => {
     //Order value of the move,
     //Current enabled mode and setter function for it,
     //Skinset of the X and O
-    const {layout, modes, setLayout, toggleClassicMode, toggleBlockerMode, order} = useStore()
+    const {layout, modes, saturatedPlayfield, setBlocker, setLayout, toggleClassicMode, toggleBlockerMode, restartOrder, setDirectionArray, order} = useStore()
     const moveSkin = useStore((state) => state.skinSet)
     //Creating useState for the layout dimensions,
     //variable for toggling the settings display
@@ -22,19 +22,41 @@ const Header = () => {
     const [settingsToggle, setSettingToggle] = useState(false)
     //Usestate for the url of the current skin img
     const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
-    const [blockerMode, setBlockerMode] = useState<Mode[]>([])
-    const [classicMode, setClassicMode] = useState<Mode[]>([])
+    const [isActive, setIsActive] = useState("")
+    //Check for the layout dimensions to be >= 5X5 
+    const [isBigEnough, setIsBigEnough] = useState(false)
+    console.log(`GENERAL ISBIGENOUGH: ${isBigEnough} ANOTHER CHECK: ${layout.colCount <= 4 && layout.rowCount <= 4}`)
+   
+   
+
+    const toggleClassic = () => {
+        restartOrder()
+        for(let i = 0; i < 4;i++){
+            setDirectionArray([2], i)
+        }
+        toggleClassicMode()}
+    const toggleBlocker = () => {
+        restartOrder()
+        for(let i = 0; i < 4;i++){
+            setDirectionArray([2], i)
+        }
+        toggleBlockerMode()}
+
+
+    if((layout.colCount > 4 && layout.rowCount > 4) && !isBigEnough){
+        setIsBigEnough(true)
+    }else if((layout.colCount <= 4 || layout.rowCount <= 4) && isBigEnough){
+        console.log(`ISBIGENOUGH: ${isBigEnough}`)
+        setIsBigEnough(false)
+        toggleClassicMode()
+    }
+        
+
 
     useEffect(() => {
-        setClassicMode(modes.filter((m) => m.name === "classic"))
-
-        setBlockerMode(modes.filter((m) => m.name === "blocker"))
-        
+        setIsActive(modes.filter((m) => m.isActive)[0].name)
     }, [modes])
-    const toggleClassic = () => {toggleClassicMode()}
-    const toggleBlocker = () => {toggleBlockerMode()}
 
-    console.log(`CLASSIC: ${JSON.stringify(classicMode)} BLOCKER: ${JSON.stringify(blockerMode)}`)
 
     //Setting the current move value on order change
     //Value is a url for the image of current skin
@@ -60,14 +82,9 @@ const Header = () => {
         return (order % 2 == 0);
     }
     
-    //Check for the layout dimensions to be >= 5X5 
-    const [isBigEnough, setIsBigEnough] = useState(false)
+    
 
-    useEffect(() => {
-        if(layout.colCount < 5 || layout.rowCount < 5)
-            setIsBigEnough(false) 
-        else setIsBigEnough(true)
-    }, [layout])
+
 
 
 return <div className={styles.header} >
@@ -91,10 +108,10 @@ return <div className={styles.header} >
             <h2>Mode:</h2>
             <section className={styles.header__settings__mode}>
                 <button className={`${styles.header__settings__mode__btnEnabled} 
-                                    ${!classicMode[0]?.isActive?"":styles.header__settings__mode__btnActive}`} 
+                                    ${!(isActive=="classic")?"":styles.header__settings__mode__btnActive}`} 
                         onClick={toggleClassic} >1</button>
                 <button title="Minimal size is 5x5" className={`${isBigEnough?styles.header__settings__mode__btnEnabled:styles.header__settings__mode__btnDisabled}
-                                    ${!blockerMode[0]?.isActive?"":styles.header__settings__mode__btnActive} `} 
+                                    ${!(isActive=="blocker")?"":styles.header__settings__mode__btnActive} `} 
                         onClick={toggleBlocker} >2</button>
             </section>
             <section className={styles.header__settings__mode__info} >

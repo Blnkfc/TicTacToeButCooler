@@ -51,6 +51,7 @@
             }
             &__btnDisabled{
                 filter:grayscale(100%) ;
+                pointer-events: none;
             }
             &__btnActive{
                 border: 2px solid $accentColor !important;

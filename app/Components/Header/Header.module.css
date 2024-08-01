@@ -48,6 +48,7 @@
 }
 .header__settings__mode__btnDisabled {
   filter: grayscale(100%);
+  pointer-events: none;
 }
 .header__settings__mode__btnActive {
   border: 2px solid #20b0ae !important;
