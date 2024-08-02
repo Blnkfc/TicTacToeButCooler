@@ -114,9 +114,13 @@ export const useStore = create<Store>()((set) => ({
 
   setSaturatedPlayfield: (rows: number, cols: number, val: number) => {
     set((state) => {
-      let res: number[][];
-      res = new Array(rows).fill(new Array(cols).fill(val))
-      state.setLayout(rows, cols, val)
+      let res: number[][] = []
+      for(let i=0;i<rows;i++){
+        res.push([])
+        for(let j=0;j<cols;j++){
+          res[i].push(val)
+        }
+      }
       return{saturatedPlayfield: res}
     });
   },

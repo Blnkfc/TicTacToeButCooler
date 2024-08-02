@@ -14,16 +14,14 @@ const Home = () => {
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
-  const [populatedPlayField, setPopulatedPlayField] = useState<number[][]>([])
 
   useEffect(() => {
     if(modes.filter((m) => m.name == "blocker")[0]?.isActive && saturatedPlayfield.length>4 && saturatedPlayfield[0].length>4){
       console.log(`SPP IN APP: ${saturatedPlayfield}`)
       setBlocker(saturatedPlayfield)
     }
-    setPopulatedPlayField(saturatedPlayfield)
-  }, [modes, saturatedPlayfield])  
 
+  }, [modes, saturatedPlayfield])  
 //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {
     checkForWin()
@@ -51,14 +49,14 @@ const checkForWin = () => {
   hasThreeConsecutiveElements(directionArray.antiDiagonal)
 }
 
-// LOAD THE LAYOUT UPON UPDATING THE STATE
+// LOAD THE LAYOUT WHEN UPDATED
   useEffect(() => {
     console.log(saturatedPlayfield)
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
   },[rowCount, colCount])
 
 
-  const playfield = populatedPlayField.map
+  const playfield = saturatedPlayfield?.map
   ((el, i:number) => {return <div key={i}  className={styles.playfield__row}> {el.map
     ((subEl, j:number) => {return <Cell key={j} idex={i} jdex={j}  />})} </div>})
 
