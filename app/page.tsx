@@ -1,10 +1,8 @@
 'use client'
-import Image from "next/image";
 import styles from "./page.module.css";
 import Cell from "./Cell/page";
 import { useStore } from "../src/store";
 import { useEffect, useState } from "react";
-import { Content } from "next/font/google";
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion";
 
@@ -16,14 +14,15 @@ const Home = () => {
   const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
+  const [populatedPlayField, setPopulatedPlayField] = useState<number[][]>([])
 
   useEffect(() => {
-    if(modes.filter((m) => m.name == "blocker")[0]?.isActive){
-      for(let i=0;i<3;i++){
-        setBlocker(saturatedPlayfield)
-      }
+    if(modes.filter((m) => m.name == "blocker")[0]?.isActive && saturatedPlayfield.length>4 && saturatedPlayfield[0].length>4){
+      console.log(`SPP IN APP: ${saturatedPlayfield}`)
+      setBlocker(saturatedPlayfield)
     }
-  }, [modes])  
+    setPopulatedPlayField(saturatedPlayfield)
+  }, [modes, saturatedPlayfield])  
 
 //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {
@@ -31,7 +30,6 @@ const Home = () => {
 }, [directionArray])
   
 function hasThreeConsecutiveElements(arr: number[]) {
-  //console.log(`ARRAY: ${arr}`)
   if (arr.length < 3) {
       return false; 
   }
@@ -60,9 +58,7 @@ const checkForWin = () => {
   },[rowCount, colCount])
 
 
-  console.log(`SPP: ${saturatedPlayfield}`)
-
-  const playfield = saturatedPlayfield.map
+  const playfield = populatedPlayField.map
   ((el, i:number) => {return <div key={i}  className={styles.playfield__row}> {el.map
     ((subEl, j:number) => {return <Cell key={j} idex={i} jdex={j}  />})} </div>})
 

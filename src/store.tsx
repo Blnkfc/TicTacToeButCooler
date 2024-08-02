@@ -72,7 +72,7 @@ export const useStore = create<Store>()((set) => ({
       ]
     }));
   },
-  //TODO SETTER FOR BLOCKERS, CLEANER FOR BLOCKERS AND RESETTER FOR BLOCKER
+
   setBlocker: (saturatedPlayfield: number[][]) => {
     const rowCount = saturatedPlayfield.length
     const colCount = saturatedPlayfield[0].length
@@ -84,7 +84,7 @@ export const useStore = create<Store>()((set) => ({
     for(let i = 0;i < 3;i++){
       const _randIndex: number = getRandomInt(0, rowCount)
       const _randJdex: number = getRandomInt(0, colCount)
-      console.log(`RANDOM NUBERS: I = ${_randIndex}, J = ${_randJdex}`)
+      console.log(`RANDOM NUBERS: I = ${_randIndex}, J = ${_randJdex} COLCOUNT: ${colCount} SPP: ${JSON.stringify(saturatedPlayfield)}`)
       set((state) => {
         state.saturatedPlayfield[_randIndex][_randJdex] = -1;
         return {...state};
@@ -113,11 +113,12 @@ export const useStore = create<Store>()((set) => ({
   })),
 
   setSaturatedPlayfield: (rows: number, cols: number, val: number) => {
-    let res = [];
-    for (let i = 0; i < rows; i++) {
-      res.push(new Array(cols).fill(val));
-    }
-    set(state => ({ ...state, saturatedPlayfield: res }));
+    set((state) => {
+      let res: number[][];
+      res = new Array(rows).fill(new Array(cols).fill(val))
+      state.setLayout(rows, cols, val)
+      return{saturatedPlayfield: res}
+    });
   },
 
   setCurrentCellState: (index: number, jdex: number, value: number) => {

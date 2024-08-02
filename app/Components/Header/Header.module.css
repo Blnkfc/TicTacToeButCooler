@@ -58,6 +58,9 @@
   font-size: 0.8em;
   color: #acb0ad;
 }
+.header__settings__mode__info:hover {
+  cursor: pointer;
+}
 .header__settings__mobile {
   display: none;
 }

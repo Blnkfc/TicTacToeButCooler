@@ -60,6 +60,9 @@
             &__info{
                 font-size: 0.8em;
                 color: lighten($color: $backgroundColor, $amount: 40%);
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
         &__mobile{

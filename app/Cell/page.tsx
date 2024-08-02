@@ -1,13 +1,13 @@
 'use client'
 import styles from "../page.module.css"
-import { useState, useEffect, ReactNode, use, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useStore } from "@/src/store"
 import { CellProps } from "@/interfaceList"
 import { motion } from "framer-motion";
 
 
 const Cell = (props: CellProps) => {
-    const { order, saturatedPlayfield, skinSet, directionArray, toggleOrder, setCurrentCellState, setDirectionArray, win, toggleWin } = useStore();
+    const { order, saturatedPlayfield, skinSet, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
     const [cellState, setCellState] = useState(2)
@@ -105,7 +105,7 @@ const Cell = (props: CellProps) => {
 
     const doAStep = (value: number) => {
         audio.play()
-        if (!(value == 0 || value == 1)) {
+        if (!(value == 0 || value == 1|| value == -1)) {
             console.log("value: " + value)
             console.log("boead: " + saturatedPlayfield)
 
