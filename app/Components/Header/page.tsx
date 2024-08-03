@@ -30,15 +30,10 @@ const Header = () => {
 
     const toggleClassic = () => {
         restartOrder()
-        console.log(`SPP IN CLASS HEADER: ${saturatedPlayfield}`)
-        setSaturatedPlayfield(rowCount, colCount, 2)
         toggleClassicMode()
     }
     const toggleBlocker = () => {
         restartOrder()
-        console.log(`SPP IN BLOCK HEADER: ${saturatedPlayfield}`)
-        console.log(`ROWS IN HEADER: ${rowCount} COLS IN HEADER: ${colCount}`)
-        setLayout(rowCount, colCount, 2)
         toggleBlockerMode()
     }
 
@@ -114,11 +109,11 @@ const Header = () => {
             </section>
             <h4>Modes description:</h4>
             <details className={styles.header__settings__mode__info} >
-                <summary>Classic mode</summary>
+                <summary>Classic mode(1)</summary>
                 <p>Regular tic-tac-toe with 3 in a row = win.</p>
             </details>
             <details className={styles.header__settings__mode__info} >
-                <summary>Blocker mode</summary>
+                <summary>Blocker mode(2)</summary>
                 <p>A mode where random amount of cells will be blocked for a couple of moves, <b>5x5 and larger board required</b>.</p>
             </details>
             <h2 className={styles.header__settings__mobile} >Next:</h2>

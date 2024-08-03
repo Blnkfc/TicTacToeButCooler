@@ -25,7 +25,8 @@ const Cell = (props: CellProps) => {
             if(saturatedPlayfield[props?.idex][props?.jdex] == -1){
                 console.log(`FIRED THE BLOCKER SKIN ${JSON.stringify(skinSet.blocker)}`)
                 setCellText(skinSet?.blocker || "")
-            }
+            }else if(saturatedPlayfield[props?.idex][props?.jdex] == 2)
+                setCellText("")
         }
     }, [saturatedPlayfield[props?.idex][props?.jdex]]);
 

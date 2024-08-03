@@ -9,23 +9,26 @@ import { motion } from "framer-motion";
 
 
 const Home = () => {
-  const{order, modes, saturatedPlayfield, win, directionArray, toggleWin, setBlocker} = useStore()
+  const{order, modes, saturatedPlayfield, directionArray, setSaturatedPlayfield, toggleWin, setBlocker} = useStore()
   const{rowCount, colCount, defaultCellValue} = useStore((state) => (state.layout))
-  const setSaturatedPlayfield = useStore((state) => state.setSaturatedPlayfield)
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
+  const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
 
   useEffect(() => {
     if(modes.filter((m) => m.name == "blocker")[0]?.isActive && saturatedPlayfield.length>4 && saturatedPlayfield[0].length>4){
       console.log(`SPP IN APP: ${saturatedPlayfield}`)
+      setSaturatedPlayfield(rowCount, colCount, 2)
       setBlocker(saturatedPlayfield)
+    }else{
+      setSaturatedPlayfield(rowCount, colCount, 2)
     }
-
-  }, [modes, saturatedPlayfield])  
+  }, [modes])  
 //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {
     checkForWin()
-}, [directionArray])
+    isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
+}, [order])
   
 function hasThreeConsecutiveElements(arr: number[]) {
   if (arr.length < 3) {
@@ -51,7 +54,6 @@ const checkForWin = () => {
 
 // LOAD THE LAYOUT WHEN UPDATED
   useEffect(() => {
-    console.log(saturatedPlayfield)
     setSaturatedPlayfield(rowCount, colCount, defaultCellValue)
   },[rowCount, colCount])
 
@@ -66,15 +68,12 @@ const checkForWin = () => {
   }
 
 
-  const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
+  
 
 
 //COULD TRY AND MAKE THIS CHECK IN THE DIV ITSELF TO AVOID USING THIS USEEFFECT
 
-// SETTING NEXT MOVE ELEMENT
-  useEffect(() => {
-    isEven(order)?setCurrentMove(moveSkin.classic.X):setCurrentMove(moveSkin.classic.O)
-  }, [order])
+
 
 
   return (

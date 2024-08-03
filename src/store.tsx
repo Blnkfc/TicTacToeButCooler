@@ -81,7 +81,7 @@ export const useStore = create<Store>()((set) => ({
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min) + min);
     }
-    for(let i = 0;i < 3;i++){
+    for(let i = 0;i <5;i++){
       const _randIndex: number = getRandomInt(0, rowCount)
       const _randJdex: number = getRandomInt(0, colCount)
       console.log(`RANDOM NUBERS: I = ${_randIndex}, J = ${_randJdex} COLCOUNT: ${colCount} SPP: ${JSON.stringify(saturatedPlayfield)}`)
@@ -114,6 +114,7 @@ export const useStore = create<Store>()((set) => ({
 
   setSaturatedPlayfield: (rows: number, cols: number, val: number) => {
     set((state) => {
+      console.log(state.saturatedPlayfield)
       let res: number[][] = []
       for(let i=0;i<rows;i++){
         res.push([])
