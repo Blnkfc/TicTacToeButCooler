@@ -1,7 +1,8 @@
 
 export interface CellProps {
     idex: number,
-    jdex: number    
+    jdex: number,
+    blockerLifespan: number    
 }
 
 export interface Layout{

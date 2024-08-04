@@ -27,9 +27,11 @@ const Cell = (props: CellProps) => {
         if(saturatedPlayfield[props.idex][props.jdex] == -1){
             console.log(`FIRED THE BLOCKER SKIN ${JSON.stringify(skinSet.blocker)}`)
             setCellText(skinSet?.blocker || "")
+            setLifespan(props.blockerLifespan)
         }else if(saturatedPlayfield[props.idex][props.jdex] == 2)
             setCellText("")
             
+        
     }, [order, saturatedPlayfield])
 
 
@@ -93,7 +95,7 @@ const Cell = (props: CellProps) => {
 
     const doAStep = (value: number) => {
         audio.play()
-        if (!(value == 0 || value == 1)) {
+        if (!(value == 0 || value == 1 || value == -1)) {
             console.log("value: " + value)
             console.log("boead: " + saturatedPlayfield)
 
