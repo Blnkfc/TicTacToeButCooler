@@ -14,12 +14,15 @@ const Home = () => {
   const moveSkin = useStore((state) => state.skinSet)
   const router = useRouter()
   const [currentMove, setCurrentMove] = useState("https://i.imgur.com/9h7Vqro.png")
+  const [blockersUp, setBlockersUp] = useState(false)
+  const [lifespan, setLifespan] = useState(0)
 
   useEffect(() => {
     if(modes.filter((m) => m.name == "blocker")[0]?.isActive && saturatedPlayfield.length>4 && saturatedPlayfield[0].length>4){
       console.log(`SPP IN APP: ${saturatedPlayfield}`)
       setSaturatedPlayfield(rowCount, colCount, 2)
       setBlocker(saturatedPlayfield)
+      setBlockersUp(!blockersUp)
     }else{
       setSaturatedPlayfield(rowCount, colCount, 2)
     }

@@ -84,7 +84,6 @@ export const useStore = create<Store>()((set) => ({
     for(let i = 0;i <5;i++){
       const _randIndex: number = getRandomInt(0, rowCount)
       const _randJdex: number = getRandomInt(0, colCount)
-      console.log(`RANDOM NUBERS: I = ${_randIndex}, J = ${_randJdex} COLCOUNT: ${colCount} SPP: ${JSON.stringify(saturatedPlayfield)}`)
       set((state) => {
         state.saturatedPlayfield[_randIndex][_randJdex] = -1;
         return {...state};
@@ -132,7 +131,7 @@ export const useStore = create<Store>()((set) => ({
       if (!state.saturatedPlayfield[index]) {
         state.saturatedPlayfield[index] = [];
       }
-
+      console.log(`SETCURRENTCELL FIRED, INDEX: ${index}, JSDEX: ${jdex}, VALUE: ${value}`)
       // Ensure the cell exists and update it
       state.saturatedPlayfield[index][jdex] = value;
 

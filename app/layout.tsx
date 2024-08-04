@@ -68,8 +68,7 @@ export default async function RootLayout({
     lastChangedCell: data.lastChangedCell,
     win: data.win
   })
- console.log(`MODES VALUE: ${JSON.stringify(data.modes)}`)
-  
+
 
   return (
     <html lang="en">

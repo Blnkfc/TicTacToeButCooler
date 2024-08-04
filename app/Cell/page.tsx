@@ -10,41 +10,28 @@ const Cell = (props: CellProps) => {
     const { order, saturatedPlayfield, skinSet, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
-    const [cellState, setCellState] = useState(2)
-    const cellElementRef = useRef<HTMLDivElement>(null);
+
     if (typeof window !== 'undefined')
         var audio = new Audio(`/audio/tap-notification-180637.mp3`);
 
 
-
-    //GETTING THE HTML ELEMENT OF THE CELL TO GRAB IT'S STATE
-    useEffect(() => {
-        const cellElement = document.getElementById(props.idex.toString() + props.jdex.toString());
-        if (cellElement) {
-            setCellState(saturatedPlayfield[props?.idex][props?.jdex]);
-            if(saturatedPlayfield[props?.idex][props?.jdex] == -1){
-                console.log(`FIRED THE BLOCKER SKIN ${JSON.stringify(skinSet.blocker)}`)
-                setCellText(skinSet?.blocker || "")
-            }else if(saturatedPlayfield[props?.idex][props?.jdex] == 2)
-                setCellText("")
-        }
-    }, [saturatedPlayfield[props?.idex][props?.jdex]]);
-
-
     //UPDATING LIFESPAN AND CHENGING CELL'S VALUE DEPENDING ON THE LIFESPAN
     useEffect(() => {
-        cellState != 2 ? setLifespan(lifespan + 1) : setLifespan(0)
-        console.log(`ORDER: ${order}`)
-        if (lifespan == 4) {
+        saturatedPlayfield[props.idex][props.jdex]!=2?setLifespan(lifespan+1):setLifespan(0)
+        if(lifespan==5){
             setCurrentCellState(props.idex, props.jdex, 2)
-        }
-        if (lifespan == 5) {
-
             setCellText("")
-            //console.log('CLEARED THE CELL')
+            setLifespan(0)
+            console.log('CLEARED THE CELL')
         }
+        if(saturatedPlayfield[props.idex][props.jdex] == -1){
+            console.log(`FIRED THE BLOCKER SKIN ${JSON.stringify(skinSet.blocker)}`)
+            setCellText(skinSet?.blocker || "")
+        }else if(saturatedPlayfield[props.idex][props.jdex] == 2)
+            setCellText("")
+            
+    }, [order, saturatedPlayfield])
 
-    }, [order])
 
 
 
@@ -106,7 +93,7 @@ const Cell = (props: CellProps) => {
 
     const doAStep = (value: number) => {
         audio.play()
-        if (!(value == 0 || value == 1|| value == -1)) {
+        if (!(value == 0 || value == 1)) {
             console.log("value: " + value)
             console.log("boead: " + saturatedPlayfield)
 
@@ -134,14 +121,15 @@ const Cell = (props: CellProps) => {
 
         className={styles.playfield__row__cell}
 
-        onClick={() => { doAStep(cellState) }} >
+        onClick={() => { doAStep(saturatedPlayfield[props.idex][props.jdex]) }} >
         <div
+            title={JSON.stringify(`${saturatedPlayfield[props.idex][props.jdex]}, ${lifespan}`)}
             style={{
                 backgroundImage: "url('" + cellText.toString() + "')",
                 opacity: lifespan == 5 || lifespan == 6 ? "50%" : "100%"
             }}
             id={props.idex?.toString() + props.jdex?.toString()}
-            className={cellState != 2 ? "playfield__row__cell__fadeIn" : " "}>
+            className={saturatedPlayfield[props.idex][props.jdex] != 2 ? "playfield__row__cell__fadeIn" : " "}>
             <audio src="/" preload="auto"></audio>
         </div>
     </motion.div>
