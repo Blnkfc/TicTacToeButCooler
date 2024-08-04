@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 
 const Cell = (props: CellProps) => {
-    const { order, saturatedPlayfield, skinSet, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
+    const { order, saturatedPlayfield = [[2]], skinSet, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
 
@@ -125,13 +125,12 @@ const Cell = (props: CellProps) => {
 
         onClick={() => { doAStep(saturatedPlayfield[props.idex][props.jdex]) }} >
         <div
-            title={JSON.stringify(`${saturatedPlayfield[props.idex][props.jdex]}, ${lifespan}`)}
             style={{
                 backgroundImage: "url('" + cellText.toString() + "')",
                 opacity: lifespan == 5 || lifespan == 6 ? "50%" : "100%"
             }}
             id={props.idex?.toString() + props.jdex?.toString()}
-            className={saturatedPlayfield[props.idex][props.jdex] != 2 ? "playfield__row__cell__fadeIn" : " "}>
+            >
             <audio src="/" preload="auto"></audio>
         </div>
     </motion.div>
