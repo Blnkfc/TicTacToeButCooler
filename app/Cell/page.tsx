@@ -7,31 +7,34 @@ import { motion } from "framer-motion";
 
 
 const Cell = (props: CellProps) => {
-    const { order, saturatedPlayfield = [[2]], skinSet, toggleOrder, setCurrentCellState, setDirectionArray} = useStore();
+    const { order, saturatedPlayfield = [[2]], skinSet, toggleOrder, setCurrentCellState, setDirectionArray } = useStore();
     const [cellText, setCellText] = useState("")
     const [lifespan, setLifespan] = useState(0)
+    const [isTaken, setIsTaken] = useState(false)
 
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
         var audio = new Audio(`/audio/tap-notification-180637.mp3`);
+        var audioTaken = new Audio(`/audio/taken.mp3`)
+    }
 
 
     //UPDATING LIFESPAN AND CHENGING CELL'S VALUE DEPENDING ON THE LIFESPAN
     useEffect(() => {
-        saturatedPlayfield[props.idex][props.jdex]!=2?setLifespan(lifespan+1):setLifespan(0)
-        if(lifespan==5){
+        saturatedPlayfield[props.idex][props.jdex] != 2 ? setLifespan(lifespan + 1) : setLifespan(0)
+        if (lifespan == 5) {
             setCurrentCellState(props.idex, props.jdex, 2)
             setCellText("")
             setLifespan(0)
             console.log('CLEARED THE CELL')
         }
-        if(saturatedPlayfield[props.idex][props.jdex] == -1){
+        if (saturatedPlayfield[props.idex][props.jdex] == -1) {
             console.log(`FIRED THE BLOCKER SKIN ${JSON.stringify(skinSet.blocker)}`)
             setCellText(skinSet?.blocker || "")
             setLifespan(props.blockerLifespan)
-        }else if(saturatedPlayfield[props.idex][props.jdex] == 2)
+        } else if (saturatedPlayfield[props.idex][props.jdex] == 2)
             setCellText("")
-            
-        
+
+
     }, [order, saturatedPlayfield])
 
 
@@ -93,16 +96,24 @@ const Cell = (props: CellProps) => {
     }
 
 
-    const doAStep = (value: number) => {
-        audio.play()
-        if (!(value == 0 || value == 1 || value == -1)) {
-            console.log("value: " + value)
-            console.log("boead: " + saturatedPlayfield)
+    function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+
+    const doAStep = (value: number) => {
+        if (!(value == 0 || value == 1 || value == -1)) {
+            audio.play()
             isEven(order) ? setCurrentCellState(props.idex, props.jdex, 0) : setCurrentCellState(props.idex, props.jdex, 1)
             isEven(order) ? setCellText(skinSet.classic.X) : setCellText(skinSet.classic.O);
             toggleOrder()
-        } else { alert("already taken") }
+        } else {
+            audioTaken.play()
+            setIsTaken(true)
+            sleep(700).then(() => {
+                setIsTaken(false)
+            })
+        }
         getHorizontal(props.idex, props.jdex)
         getVertical(props.idex, props.jdex)
         getDiagonal(props.idex, props.jdex)
@@ -121,17 +132,18 @@ const Cell = (props: CellProps) => {
         }}
         transition={{ duration: 0.45 }}
 
-        className={styles.playfield__row__cell}
+        className={`${styles.playfield__row__cell} `}
 
         onClick={() => { doAStep(saturatedPlayfield[props.idex][props.jdex]) }} >
         <div
+            className={`${isTaken ? styles.playfield__row__cell__taken : ""}`}
             style={{
                 backgroundImage: "url('" + cellText.toString() + "')",
                 opacity: lifespan == 5 || lifespan == 6 ? "50%" : "100%"
             }}
             id={props.idex?.toString() + props.jdex?.toString()}
-            >
-            <audio src="/" preload="auto"></audio>
+        >
+            
         </div>
     </motion.div>
 

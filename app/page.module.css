@@ -139,6 +139,9 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.playfield__row__cell__taken {
+  animation: shake 0.2s linear;
+}
 
 @keyframes cell-spin-in {
   from {
@@ -154,6 +157,20 @@
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes shake {
+  0% {
+    translate: -6%;
+  }
+  35% {
+    translate: 9%;
+  }
+  60% {
+    translate: -7%;
+  }
+  100% {
+    translate: 0;
   }
 }
 @media screen and (max-width: 600px) {

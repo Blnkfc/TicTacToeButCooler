@@ -27,7 +27,7 @@ export const useStore = create<Store>()((set) => ({
       X: "https://i.imgur.com/9h7Vqro.png",
       O: "https://i.imgur.com/vYbErYP.png"
     },
-    blocker: "https://cdn-icons-png.flaticon.com/512/507/507210.png"
+    blocker: "https://i.imgur.com/GTmEGTN.png"
   },
   directionArray: {
     horizontal: [2],
