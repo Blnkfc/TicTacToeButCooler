@@ -39,7 +39,6 @@ export default async function RootLayout({
 
 
   async function  fetchData ()  {
-    
     try{
       const response = await axios.get("https://raw.githubusercontent.com/Blnkfc/TicTacToeButCooler/main/data/state.json")
       return response.data

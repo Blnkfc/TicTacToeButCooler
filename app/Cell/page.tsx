@@ -1,6 +1,6 @@
 'use client'
 import styles from "../page.module.css"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { useStore } from "@/src/store"
 import { CellProps } from "@/interfaceList"
 import { motion } from "framer-motion";
@@ -121,6 +121,7 @@ const Cell = (props: CellProps) => {
     }
 
 
+
     return <motion.div
 
         animate={{
@@ -143,7 +144,7 @@ const Cell = (props: CellProps) => {
             }}
             id={props.idex?.toString() + props.jdex?.toString()}
         >
-            
+
         </div>
     </motion.div>
 

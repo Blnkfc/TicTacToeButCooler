@@ -2,13 +2,14 @@
 import styles from "./page.module.css";
 import Cell from "./Cell/page";
 import { useStore } from "../src/store";
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion";
+import router from "next/router";
 
 
 
-const Home = () => {
+const Home = memo(() => {
   const { order, modes, saturatedPlayfield, directionArray, setSaturatedPlayfield, toggleWin, setBlocker } = useStore()
   const { rowCount, colCount, defaultCellValue } = useStore((state) => (state.layout))
   const moveSkin = useStore((state) => state.skinSet)
@@ -27,6 +28,9 @@ const Home = () => {
       setSaturatedPlayfield(rowCount, colCount, 2)
     }
   }, [modes])
+
+
+
   //MONITOR CHANGES OF POTENTIAL WIN ARRAY AND EXECUTE CHECK FUNCTION ON CHANGE
   useEffect(() => {
     checkForWin()
@@ -40,6 +44,8 @@ const Home = () => {
       } else setLifespan(lifespan + 1)
     }
   }, [order])
+
+
 
   function hasThreeConsecutiveElements(arr: number[]) {
     if (arr.length < 3) {
@@ -56,12 +62,12 @@ const Home = () => {
   }
 
   // CHECK FOR THREE CONSECUTIVE CELLS IN EVERY DIRECTION 
-  const checkForWin = () => {
+  const checkForWin = useCallback(() => {
     hasThreeConsecutiveElements(directionArray.horizontal)
     hasThreeConsecutiveElements(directionArray.vertical)
     hasThreeConsecutiveElements(directionArray.diagonal)
     hasThreeConsecutiveElements(directionArray.antiDiagonal)
-  }
+  }, [hasThreeConsecutiveElements])
 
   // LOAD THE LAYOUT WHEN UPDATED
   useEffect(() => {
@@ -80,14 +86,7 @@ const Home = () => {
     return (order % 2 == 0);
   }
 
-
-
-
-
-  //COULD TRY AND MAKE THIS CHECK IN THE DIV ITSELF TO AVOID USING THIS USEEFFECT
-
-
-
+  console.log(`RERENDERED`)
 
   return (
     <div className={styles.board}>
@@ -128,6 +127,7 @@ const Home = () => {
       </div>
     </div>
   );
-}
+})
+
 
 export default Home
